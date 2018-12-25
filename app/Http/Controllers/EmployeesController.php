@@ -45,6 +45,15 @@ class EmployeesController extends Controller
             $Employees->password = Hash::make($request->input('phone'));
             $Employees->refer_code = substr(number_format(time() * rand(),0,'',''),0,6);
             $Employees->save();
+            
+            if($request->input('refer_code')){
+                $refer_Employees = Employees::where('refer_code' , '=', $request->input('refer_code'))->first();
+                if($refer_Employees){
+                    $refer_Employees->referred = $refer_Employees->referred + 1;
+                    $refer_Employees->save();
+                }
+            }
+
             return ['success' => true, 'Employees' => $Employees];
         }else{
             return ['success' => false, 'msg' => 'Phone Number Used'];

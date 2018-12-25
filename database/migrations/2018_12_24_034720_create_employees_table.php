@@ -27,6 +27,7 @@ class CreateEmployeesTable extends Migration
             $table->string('post')->nullable();
             $table->string('thana')->nullable();
             $table->string('district')->nullable();
+            $table->string('referred')->default(0);
             $table->timestamps();
         });
     }
