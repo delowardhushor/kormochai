@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Employers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class EmployersController extends Controller
 {
@@ -35,7 +36,16 @@ class EmployersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $Employers = Employers::where("phone", "=", $request->input('phone'))->first();
+        if($Employers == ''){
+            $Employers = new Employers;
+            $Employers->phone = $request->input('phone');
+            $Employers->password = Hash::make($request->input('phone'));
+            $Employers->save();
+            return ['success' => true, 'Employers' => $Employers];
+        }else{
+            return ['success' => false, 'msg' => 'Phone Number Used'];
+        }
     }
 
     /**

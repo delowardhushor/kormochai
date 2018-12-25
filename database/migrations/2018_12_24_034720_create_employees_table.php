@@ -17,6 +17,7 @@ class CreateEmployeesTable extends Migration
             $table->increments('id');
             $table->string('phone');
             $table->string('password');
+            $table->string('refer_code');
             $table->string('name')->nullable();
             $table->string('age')->nullable();
             $table->string('gender')->nullable();
