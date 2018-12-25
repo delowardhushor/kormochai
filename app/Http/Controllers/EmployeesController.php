@@ -91,7 +91,18 @@ class EmployeesController extends Controller
      */
     public function update(Request $request, Employees $employees)
     {
-        //
+        $Employees = Employees::find($request->input('id'));
+        $Employees->name = $request->name;
+        $Employees->age = $request->age;
+        $Employees->gender = $request->gender;
+        $Employees->education = $request->education;
+        $Employees->address = $request->address;
+        $Employees->area = $request->area;
+        $Employees->post = $request->post;
+        $Employees->thana = $request->thana;
+        $Employees->district = $request->district;
+        $Employees->save();
+        return ['success' => true];
     }
 
     /**
@@ -100,7 +111,7 @@ class EmployeesController extends Controller
      * @param  \App\Employees  $employees
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Employees $employees)
+    public function destroy($id)
     {
         //
     }
