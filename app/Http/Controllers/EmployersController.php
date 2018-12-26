@@ -67,7 +67,7 @@ class EmployersController extends Controller
      */
     public function edit(Employers $employers)
     {
-        return $employers;
+        //
     }
 
     /**
@@ -79,7 +79,7 @@ class EmployersController extends Controller
      */
     public function update(Request $request, Employers $employers)
     {
-        return $employers;
+        //
     }
 
     /**

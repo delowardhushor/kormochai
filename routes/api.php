@@ -21,4 +21,6 @@ Route::group(['middleware' => 'cors'], function(){
     Route::resource('employees', 'EmployeesController');
     Route::resource('employers', 'EmployersController');
     Route::resource('jobs', 'JobsController');
+
+    Route::post('/login', 'EmployeesController@login');
 });

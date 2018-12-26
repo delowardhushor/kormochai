@@ -20,6 +20,16 @@ class EmployeesController extends Controller
         return "hello";
     }
 
+    public function login(Request $request)
+    {
+        $Employees = Employees::where("phone", "=", $request->input('phone'))->first();
+        if($Employees !== '' && Hash::check($request->input('password'), $Employees->password) === true){
+            return ['success' => false, 'data' => $Employees];
+        }else{
+            return ['success' => true, 'msg' => 'Invalid Information'];
+        }
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -42,7 +52,7 @@ class EmployeesController extends Controller
         if($Employees == ''){
             $Employees = new Employees;
             $Employees->phone = $request->input('phone');
-            $Employees->password = Hash::make($request->input('phone'));
+            $Employees->password = Hash::make($request->input('password'));
             $Employees->refer_code = substr(number_format(time() * rand(),0,'',''),0,6);
             $Employees->save();
             

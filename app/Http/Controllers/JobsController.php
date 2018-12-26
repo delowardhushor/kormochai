@@ -86,7 +86,24 @@ class JobsController extends Controller
      */
     public function update(Request $request, Jobs $jobs)
     {
-        //
+        $Jobs = Jobs::find($jobs);
+        $Jobs->employees_id = $request->input('employees_id');
+        $Jobs->company_name = $request->input('company_name');
+        $Jobs->job_title = $request->input('job_title');
+        $Jobs->education = $request->input('education');
+        $Jobs->salary = $request->input('salary');
+        $Jobs->office_hour = $request->input('office_hour');
+        $Jobs->location = $request->input('location');
+        $Jobs->job_responsibility = $request->input('job_responsibility');
+        $Jobs->interview = $request->input('interview');
+        $Jobs->interview_date = $request->input('interview_date');
+        $Jobs->job_date = $request->input('job_date');
+        $Jobs->job_type = $request->input('job_type');
+        if($Jobs->save()){
+            return ['success' => true, 'Jobs' => $Jobs];
+        }else{
+            return ['success' => false, 'msg' => 'Fill Empty'];
+        }
     }
 
     /**
