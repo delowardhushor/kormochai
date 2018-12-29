@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Applications;
+use App\Employees_jobs;
 use Illuminate\Http\Request;
 
-class ApplicationsController extends Controller
+use App\Jobs;
+use App\Employees;
+
+class EmployeesJobsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,16 +38,20 @@ class ApplicationsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $Jobs = Jobs::find($request->input('job_id'));
+        $Employees = Employees::find($request->input('employees_id'));
+        $Jobs->employees()->attach($Employees);
+
+        return ['success' => true];
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Applications  $applications
+     * @param  \App\Employees_jobs  $employees_jobs
      * @return \Illuminate\Http\Response
      */
-    public function show(Applications $applications)
+    public function show(Employees_jobs $employees_jobs)
     {
         //
     }
@@ -52,10 +59,10 @@ class ApplicationsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Applications  $applications
+     * @param  \App\Employees_jobs  $employees_jobs
      * @return \Illuminate\Http\Response
      */
-    public function edit(Applications $applications)
+    public function edit(Employees_jobs $employees_jobs)
     {
         //
     }
@@ -64,10 +71,10 @@ class ApplicationsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Applications  $applications
+     * @param  \App\Employees_jobs  $employees_jobs
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Applications $applications)
+    public function update(Request $request, Employees_jobs $employees_jobs)
     {
         //
     }
@@ -75,11 +82,16 @@ class ApplicationsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Applications  $applications
+     * @param  \App\Employees_jobs  $employees_jobs
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Applications $applications)
+    public function destroy(Request $request)
     {
-        //
+        $Jobs = Jobs::find($request->input('job_id'));
+        $Employees = Employees::find($request->input('employees_id'));
+
+        $Employees->jobs()->detach($Jobs);
+        
+        return 'Success';
     }
 }
