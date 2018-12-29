@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Jobs;
 use Illuminate\Http\Request;
 
+use App\Http\Resources\Jobs as JobResource;
+
 class JobsController extends Controller
 {
     /**
@@ -14,7 +16,8 @@ class JobsController extends Controller
      */
     public function index()
     {
-        return Jobs::all();
+        $Jobs = Jobs::all();
+        return JobResource::collection($Jobs);
     }
 
     /**
