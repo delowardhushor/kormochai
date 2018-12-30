@@ -42,9 +42,19 @@ class EmployersController extends Controller
             $Employers->phone = $request->input('phone');
             $Employers->password = Hash::make($request->input('phone'));
             $Employers->save();
-            return ['success' => true, 'Employers' => $Employers];
+            return ['success' => true, 'data' => $Employers];
         }else{
             return ['success' => false, 'msg' => 'Phone Number Used'];
+        }
+    }
+
+    public function login(Request $request)
+    {
+        $Employers = Employers::where("phone", "=", $request->input('phone'))->first();
+        if($Employers !== '' && Hash::check($request->input('password'), $Employers->password) === true){
+            return ['success' => false, 'data' => $Employers];
+        }else{
+            return ['success' => true, 'msg' => 'Invalid Information'];
         }
     }
 

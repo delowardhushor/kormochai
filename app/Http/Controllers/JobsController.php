@@ -39,7 +39,7 @@ class JobsController extends Controller
     public function store(Request $request)
     {
         $Jobs = new Jobs;
-        $Jobs->employees_id = $request->input('employees_id');
+        $Jobs->employers_id = $request->input('employers_id');
         $Jobs->company_name = $request->input('company_name');
         $Jobs->job_title = $request->input('job_title');
         $Jobs->education = $request->input('education');
@@ -90,7 +90,7 @@ class JobsController extends Controller
     public function update(Request $request, Jobs $jobs)
     {
         $Jobs = Jobs::find($jobs);
-        $Jobs->employees_id = $request->input('employees_id');
+        $Jobs->employers_id = $request->input('employers_id');
         $Jobs->company_name = $request->input('company_name');
         $Jobs->job_title = $request->input('job_title');
         $Jobs->education = $request->input('education');

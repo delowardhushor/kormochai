@@ -17,7 +17,7 @@ class Jobs extends JsonResource
         //return parent::toArray($request);
         return [
             'id' => $this->id,
-            'employees_id' => $this->employees_id,
+            'employers_id' => $this->employers_id,
             'company_name' => $this->company_name,
             'job_title' => $this->job_title,
             'education' => $this->education,

@@ -63,8 +63,7 @@ class EmployeesController extends Controller
                     $refer_Employees->save();
                 }
             }
-
-            return ['success' => true, 'Employees' => $Employees];
+            return ['success' => true, 'data' => $Employees];
         }else{
             return ['success' => false, 'msg' => 'Phone Number Used'];
         }
