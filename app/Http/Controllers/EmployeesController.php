@@ -17,16 +17,16 @@ class EmployeesController extends Controller
      */
     public function index()
     {
-        return "hello";
+        //
     }
 
     public function login(Request $request)
     {
         $Employees = Employees::where("phone", "=", $request->input('phone'))->first();
         if($Employees !== '' && Hash::check($request->input('password'), $Employees->password) === true){
-            return ['success' => false, 'data' => $Employees];
+            return ['success' => true, 'data' => $Employees];
         }else{
-            return ['success' => true, 'msg' => 'Invalid Information'];
+            return ['success' => false, 'msg' => 'Invalid Information'];
         }
     }
 

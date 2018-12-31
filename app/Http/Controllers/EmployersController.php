@@ -52,9 +52,9 @@ class EmployersController extends Controller
     {
         $Employers = Employers::where("phone", "=", $request->input('phone'))->first();
         if($Employers !== '' && Hash::check($request->input('password'), $Employers->password) === true){
-            return ['success' => false, 'data' => $Employers];
+            return ['success' => true, 'data' => $Employers];
         }else{
-            return ['success' => true, 'msg' => 'Invalid Information'];
+            return ['success' => false, 'msg' => 'Invalid Information'];
         }
     }
 
