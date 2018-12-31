@@ -51,6 +51,7 @@ class JobsController extends Controller
         $Jobs->interview_date = $request->input('interview_date');
         $Jobs->job_date = $request->input('job_date');
         $Jobs->job_type = $request->input('job_type');
+        $Jobs->job_type = $request->input('category');
         if($Jobs->save()){
             return ['success' => true, 'Jobs' => $Jobs];
         }else{
@@ -102,6 +103,7 @@ class JobsController extends Controller
         $Jobs->interview_date = $request->input('interview_date');
         $Jobs->job_date = $request->input('job_date');
         $Jobs->job_type = $request->input('job_type');
+        $Jobs->job_type = $request->input('category');
         if($Jobs->save()){
             return ['success' => true, 'Jobs' => $Jobs];
         }else{

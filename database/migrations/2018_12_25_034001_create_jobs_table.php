@@ -27,6 +27,7 @@ class CreateJobsTable extends Migration
             $table->string('interview_date')->nullable();
             $table->string('job_date')->nullable();
             $table->string('job_type');
+            $table->string('category');
             $table->timestamps();
         });
     }
