@@ -19,8 +19,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['middleware' => 'cors'], function(){
     Route::resource('employees', 'EmployeesController');
+    Route::post('/employees/update', 'EmployeesController@update');
     Route::resource('employers', 'EmployersController');
     Route::resource('jobs', 'JobsController');
+    Route::post('/intervalJob', 'JobsController@intervalJob');
     Route::resource('applications', 'EmployeesJobsController');
     Route::post('/employees/login', 'EmployeesController@login');
     Route::post('/employers/login', 'EmployersController@login');

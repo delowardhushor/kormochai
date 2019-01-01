@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Jobs;
+use App\Employers;
+use App\Employees;
 use Illuminate\Http\Request;
 
 use App\Http\Resources\Jobs as JobResource;
@@ -51,7 +53,7 @@ class JobsController extends Controller
         $Jobs->interview_date = $request->input('interview_date');
         $Jobs->job_date = $request->input('job_date');
         $Jobs->job_type = $request->input('job_type');
-        $Jobs->job_type = $request->input('category');
+        $Jobs->category = $request->input('category');
         if($Jobs->save()){
             return ['success' => true, 'Jobs' => $Jobs];
         }else{
@@ -103,7 +105,7 @@ class JobsController extends Controller
         $Jobs->interview_date = $request->input('interview_date');
         $Jobs->job_date = $request->input('job_date');
         $Jobs->job_type = $request->input('job_type');
-        $Jobs->job_type = $request->input('category');
+        $Jobs->category = $request->input('category');
         if($Jobs->save()){
             return ['success' => true, 'Jobs' => $Jobs];
         }else{
@@ -120,5 +122,15 @@ class JobsController extends Controller
     public function destroy(Jobs $jobs)
     {
         //
+    }
+
+    public function intervalJob(Request $request)
+    {
+        $myJobs = [];
+        $Jobs = Jobs::all();
+        if($request->id){
+            $myJobs = $request->usertype == 'employees' ? Employees::find($request->id)->jobs : Employers::find($request->id)->jobs;
+        }
+        return ['success' => true, 'jobs' => $Jobs, 'myJobs' => $myJobs];
     }
 }
