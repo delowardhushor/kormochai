@@ -10,4 +10,9 @@ class Jobs extends Model
     {
         return $this->belongsToMany('App\Employees');
     }
+
+    public function employers()
+    {
+        return $this->belongsTo('App\Employers');
+    }
 }

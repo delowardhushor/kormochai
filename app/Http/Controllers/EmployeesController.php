@@ -111,7 +111,7 @@ class EmployeesController extends Controller
         $Employees->thana = $request->thana;
         $Employees->district = $request->district;
         $Employees->save();
-        return ['success' => true];
+        return ['success' => true, 'employees' => $Employees];
     }
 
     /**
