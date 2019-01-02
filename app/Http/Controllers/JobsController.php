@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Jobs;
 use App\Employers;
 use App\Employees;
+use App\Cats;
+use App\Locations;
 use Illuminate\Http\Request;
 
 use App\Http\Resources\Jobs as JobResource;
@@ -128,9 +130,11 @@ class JobsController extends Controller
     {
         $myJobs = [];
         $Jobs = Jobs::all();
+        $Cats = Cats::all();
+        $Locations = Locations::all();
         if($request->id){
             $myJobs = $request->usertype == 'employees' ? Employees::find($request->id)->jobs : Employers::find($request->id)->jobs;
         }
-        return ['success' => true, 'jobs' => $Jobs, 'myJobs' => $myJobs];
+        return ['success' => true, 'jobs' => $Jobs, 'myJobs' => $myJobs, 'Cats' => $Cats, '$Locations' => $Locations];
     }
 }
