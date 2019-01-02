@@ -7,6 +7,7 @@ use App\Employers;
 use App\Employees;
 use App\Cats;
 use App\Locations;
+use App\Educatives;
 use Illuminate\Http\Request;
 
 use App\Http\Resources\Jobs as JobResource;
@@ -131,12 +132,13 @@ class JobsController extends Controller
     public function intervalJob(Request $request)
     {
         $myJobs = [];
-        $Jobs = Jobs::all();
+        $Jobs = Jobs::orderBy('id', 'desc')->get();
         $Cats = Cats::all();
         $Locations = Locations::all();
+        $Educatives = Educatives::orderBy('id', 'desc')->get();
         if($request->id){
             $myJobs = $request->usertype == 'employees' ? Employees::find($request->id)->jobs : Employers::find($request->id)->jobs;
         }
-        return ['success' => true, 'jobs' => $Jobs, 'myJobs' => $myJobs, 'cats' => $Cats, 'locations' => $Locations];
+        return ['success' => true, 'jobs' => $Jobs, 'myJobs' => $myJobs, 'cats' => $Cats, 'locations' => $Locations, 'educatives' => $Educatives];
     }
 }
