@@ -48,6 +48,7 @@ class JobsController extends Controller
         $Jobs->job_title = $request->input('job_title');
         $Jobs->education = $request->input('education');
         $Jobs->salary = $request->input('salary');
+        $Jobs->salary_type = $request->input('salary_type');
         $Jobs->office_hour = $request->input('office_hour');
         $Jobs->location = $request->input('location');
         $Jobs->job_responsibility = $request->input('job_responsibility');
@@ -100,6 +101,7 @@ class JobsController extends Controller
         $Jobs->job_title = $request->input('job_title');
         $Jobs->education = $request->input('education');
         $Jobs->salary = $request->input('salary');
+        $Jobs->salary_type = $request->input('salary_type');
         $Jobs->office_hour = $request->input('office_hour');
         $Jobs->location = $request->input('location');
         $Jobs->job_responsibility = $request->input('job_responsibility');
@@ -135,6 +137,6 @@ class JobsController extends Controller
         if($request->id){
             $myJobs = $request->usertype == 'employees' ? Employees::find($request->id)->jobs : Employers::find($request->id)->jobs;
         }
-        return ['success' => true, 'jobs' => $Jobs, 'myJobs' => $myJobs, 'Cats' => $Cats, '$Locations' => $Locations];
+        return ['success' => true, 'jobs' => $Jobs, 'myJobs' => $myJobs, 'cats' => $Cats, 'locations' => $Locations];
     }
 }
