@@ -11,6 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('app');
+
+Route::group(['middleware' => 'auth'], function(){
+    Route::resource('employees', 'EmployeesController');
+    Route::post('/employees/update', 'EmployeesController@update');
+    Route::resource('employers', 'EmployersController');
+    Route::resource('jobs', 'JobsController');
+    Route::post('/intervalJob', 'JobsController@intervalJob');
+    Route::resource('applications', 'EmployeesJobsController');
+    Route::post('/employees/login', 'EmployeesController@login');
+    Route::post('/employers/login', 'EmployersController@login');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
