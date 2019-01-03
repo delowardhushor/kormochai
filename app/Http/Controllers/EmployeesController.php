@@ -23,7 +23,10 @@ class EmployeesController extends Controller
     public function login(Request $request)
     {
         $Employees = Employees::where("phone", "=", $request->input('phone'))->first();
-        if($Employees !== '' && Hash::check($request->input('password'), $Employees->password) === true){
+        if($Employees == ''){
+            return ['success' => false, 'msg' => 'Invalid Information'];
+        }
+        elseif($Employees !== '' && Hash::check($request->input('password'), $Employees->password) === true){
             return ['success' => true, 'data' => $Employees];
         }else{
             return ['success' => false, 'msg' => 'Invalid Information'];
