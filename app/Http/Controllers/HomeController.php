@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Jobs;
+use App\Http\Resources\Jobs as JobResource;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $Jobs = JobResource::collection(Jobs::orderBy('id', 'desc')->paginate(50));
+        return view('home')->with(compact("Jobs"));
     }
 }
