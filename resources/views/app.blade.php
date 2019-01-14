@@ -7,7 +7,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/img/apple-icon.png')}}">
   <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png')}}">
   <title>
-    Black Dashboard by Creative Tim
+    KORMOCHAI - @yield('title')
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
@@ -28,66 +28,42 @@
     -->
       <div class="sidebar-wrapper">
         <div class="logo">
-          <a href="javascript:void(0)" class="simple-text logo-mini">
-            CT
+          <a href="{{url('/')}}" class="simple-text logo-mini">
+            <img src='img/logo.png' style="width: 200px;" />
           </a>
-          <a href="javascript:void(0)" class="simple-text logo-normal">
-            Creative Tim
+          <a href="{{url('/')}}" class="simple-text logo-normal">
+            KORMOCHAI
           </a>
         </div>
         <ul class="nav">
           <li>
-            <a href="./dashboard.html">
-              <i class="tim-icons icon-chart-pie-36"></i>
+            <a href="{{route('home')}}">
+              <i class="fa fa-industry"></i>
               <p>JOBS</p>
             </a>
           </li>
           <li>
-            <a href="./icons.html">
-              <i class="tim-icons icon-atom"></i>
-              <p>Icons</p>
-            </a>
-          </li>
-          <li>
-            <a href="./map.html">
-              <i class="tim-icons icon-pin"></i>
-              <p>Maps</p>
-            </a>
-          </li>
-          <li>
-            <a href="./notifications.html">
-              <i class="tim-icons icon-bell-55"></i>
-              <p>Notifications</p>
-            </a>
-          </li>
-          <li>
-            <a href="./user.html">
+            <a href="{{route('employees.index')}}">
               <i class="tim-icons icon-single-02"></i>
-              <p>User Profile</p>
+              <p>Employees</p>
             </a>
           </li>
-          <li class="active">
-            <a href="./tables.html">
+          <li>
+            <a href="{{route('locations.index')}}">
+              <i class="tim-icons icon-pin"></i>
+              <p>Location</p>
+            </a>
+          </li>
+          <li>
+            <a href="{{route('cats.index')}}">
               <i class="tim-icons icon-puzzle-10"></i>
-              <p>Table List</p>
+              <p>Categories</p>
             </a>
           </li>
           <li>
-            <a href="./typography.html">
-              <i class="tim-icons icon-align-center"></i>
-              <p>Typography</p>
-            </a>
-          </li>
-          <li>
-            <a href="./rtl.html">
+            <a href="{{route('educatives.index')}}">
               <i class="tim-icons icon-world"></i>
-              <p>RTL Support</p>
-            </a>
-          </li>
-          <li class="active-pro">
-            <a href="./upgrade.html">
-              <i class="tim-icons icon-spaceship"></i>
-              <p>Upgrade to PRO</p>
+              <p>Educatives</p>
             </a>
           </li>
         </ul>
@@ -105,7 +81,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="javascript:void(0)">KORMOCHAI</a>
+            <a class="navbar-brand" href="javascript:void(0)">@yield('title')</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -226,7 +202,7 @@
       </footer>
     </div>
   </div>
-  <div class="fixed-plugin">
+ <!--  <div class="fixed-plugin">
     <div class="dropdown show-dropdown">
       <a href="#" data-toggle="dropdown">
         <i class="fa fa-cog fa-2x"> </i>
@@ -266,6 +242,7 @@
       </ul>
     </div>
   </div>
+ -->
   <!--   Core JS Files   -->
   <script src="{{ asset('assets/js/core/jquery.min.js')}}"></script>
   <script src="{{ asset('assets/js/core/popper.min.js')}}"></script>
@@ -393,6 +370,12 @@
       });
     });
   </script>
+  @if(session('success'))
+    <script type="text/javascript">demo.showNotification('bottom','right', "{{session('success')}}")</script>
+  @endif
+  @if(session('error'))
+    <script type="text/javascript">demo.showNotification('bottom','right', "{{session('success')}}")</script>
+  @endif
 </body>
 
 </html>

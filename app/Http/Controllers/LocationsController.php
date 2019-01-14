@@ -14,7 +14,8 @@ class LocationsController extends Controller
      */
     public function index()
     {
-        //
+        $locations = Locations::all();
+        return view('locations')->with(compact('locations'));
     }
 
     /**
@@ -35,7 +36,10 @@ class LocationsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $locations = new Locations;
+        $locations->locations = $request->input('locations');
+        $locations->save();
+        return redirect()->route('locations.index')->with('success', 'Locations Added'); 
     }
 
     /**
@@ -78,8 +82,10 @@ class LocationsController extends Controller
      * @param  \App\Locations  $locations
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Locations $locations)
+    public function destroy(Request $request)
     {
-        //
+        $loc = Locations::find($request->input('id'));
+        $loc->delete();
+        return redirect()->route('locations.index')->with('success', 'Locations Deleted'); 
     }
 }

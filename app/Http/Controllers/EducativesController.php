@@ -14,7 +14,8 @@ class EducativesController extends Controller
      */
     public function index()
     {
-        //
+        $educatives = Educatives::all();
+        return view('educatives')->with(compact('educatives'));
     }
 
     /**
@@ -35,7 +36,21 @@ class EducativesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, ['thumble' => 'image|mimes:jpeg,png,jpg,gif,svg|max:4048',]);
+
+        $file = $request->file('thumble');
+
+        $name = substr(number_format(time() * rand(),0,'',''),0,6).".".$file->getClientOriginalExtension();
+
+        $file->move('img/', $name);
+
+        $edu = new Educatives;
+
+        $edu->title = $request->input('title');
+        $edu->thumble = $name;
+        $edu->link = $request->input('link');
+        $edu->save();
+        return redirect()->route('educatives.index')->with('success', 'Educatives Added'); 
     }
 
     /**
@@ -78,8 +93,11 @@ class EducativesController extends Controller
      * @param  \App\Educatives  $educatives
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Educatives $educatives)
+    public function destroy(Request $request)
     {
-        //
+        $educatives = Educatives::find($request->input('id'));
+        unlink('img/'.$educatives->thumble);
+        $educatives->delete();
+        return redirect()->route('educatives.index')->with('success', 'Educatives Deleted');
     }
 }

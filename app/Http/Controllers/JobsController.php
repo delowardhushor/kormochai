@@ -21,8 +21,7 @@ class JobsController extends Controller
      */
     public function index()
     {
-        $Jobs = Jobs::all();
-        return JobResource::collection($Jobs);
+        //
     }
 
     /**
@@ -71,9 +70,10 @@ class JobsController extends Controller
      * @param  \App\Jobs  $jobs
      * @return \Illuminate\Http\Response
      */
-    public function show(Jobs $jobs)
+    public function show($jobs)
     {
-        //
+        $Job = JObs::find($jobs);
+        return view('jobdetails')->with(compact("Job"));
     }
 
     /**

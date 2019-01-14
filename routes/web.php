@@ -21,6 +21,12 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('applications', 'EmployeesJobsController');
     Route::post('/employees/login', 'EmployeesController@login');
     Route::post('/employers/login', 'EmployersController@login');
+    Route::resource('locations', 'LocationsController');
+    Route::resource('cats', 'CatsController');
+    Route::resource('educatives', 'EducativesController');
+    Route::post('/dellocations' ,'LocationsController@destroy');
+    Route::post('/delcats' , 'CatsController@destroy');
+    Route::post('/deledue' , 'EducativesController@destroy');
 });
 
 Auth::routes();

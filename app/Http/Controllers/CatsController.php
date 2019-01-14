@@ -14,7 +14,8 @@ class CatsController extends Controller
      */
     public function index()
     {
-        //
+        $cats = Cats::all();
+        return view('cats')->with(compact('cats'));
     }
 
     /**
@@ -35,7 +36,10 @@ class CatsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cats = new Cats;
+        $cats->cat = $request->input('cats');
+        $cats->save();
+        return redirect()->route('cats.index')->with('success', 'Category Added'); 
     }
 
     /**
@@ -78,8 +82,10 @@ class CatsController extends Controller
      * @param  \App\Cats  $cats
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cats $cats)
+    public function destroy(Request $request)
     {
-        //
+        $cats = Cats::find($request->input('id'));
+        $cats->delete();
+        return redirect()->route('cats.index')->with('success', 'Category Deleted'); 
     }
 }

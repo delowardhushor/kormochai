@@ -17,7 +17,8 @@ class EmployeesController extends Controller
      */
     public function index()
     {
-        //
+        $employees = Employees::all();
+        return view('employees')->with(compact('employees'));
     }
 
     public function login(Request $request)
@@ -78,9 +79,10 @@ class EmployeesController extends Controller
      * @param  \App\Employees  $employees
      * @return \Illuminate\Http\Response
      */
-    public function show(Employees $employees)
+    public function show($employees)
     {
-        //
+        $employee = Employees::find($employees);
+        return view('employeesdetails')->with(compact('employee'));
     }
 
     /**
