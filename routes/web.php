@@ -16,16 +16,24 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('employees', 'EmployeesController');
     Route::post('/employees/update', 'EmployeesController@update');
     Route::resource('employers', 'EmployersController');
+    Route::resource('partners', 'PartnersController');
+    Route::resource('clients', 'ClientsController');
     Route::resource('jobs', 'JobsController');
     Route::post('/intervalJob', 'JobsController@intervalJob');
     Route::resource('applications', 'EmployeesJobsController');
     Route::post('/employees/login', 'EmployeesController@login');
     Route::post('/employers/login', 'EmployersController@login');
     Route::resource('locations', 'LocationsController');
+
     Route::resource('cats', 'CatsController');
+    Route::resource('parcats', 'ParcatsController');
+    Route::resource('clicats', 'ClicatsController');
+
     Route::resource('educatives', 'EducativesController');
     Route::post('/dellocations' ,'LocationsController@destroy');
     Route::post('/delcats' , 'CatsController@destroy');
+    Route::post('delclicats', 'ClicatsController@destroy');
+    Route::post('delparcats', 'ParcatsController@destroy');
     Route::post('/deledue' , 'EducativesController@destroy');
 });
 

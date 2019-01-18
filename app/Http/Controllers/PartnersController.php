@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Partners;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Hash;
+
+
 class PartnersController extends Controller
 {
     /**
@@ -14,7 +17,8 @@ class PartnersController extends Controller
      */
     public function index()
     {
-        //
+        $partners = Partners::paginate(50);
+        return view('partners')->with(compact('partners'));
     }
 
     /**
@@ -27,6 +31,19 @@ class PartnersController extends Controller
         //
     }
 
+    public function login(Request $request)
+    {
+        $Partners = Partners::where("phone", "=", $request->input('phone'))->first();
+        if($Partners == ''){
+            return ['success' => false, 'msg' => 'Invalid Information'];
+        }
+        elseif($Partners !== '' && Hash::check($request->input('password'), $Partners->password) === true){
+            return ['success' => true, 'data' => $Partners];
+        }else{
+            return ['success' => false, 'msg' => 'Invalid Information'];
+        }
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -35,7 +52,25 @@ class PartnersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $Partners = Partners::where("phone", "=", $request->input('phone'))->first();
+        if($Partners == ''){
+            $Partners = new Partners;
+            $Partners->phone = $request->input('phone');
+            $Partners->password = Hash::make($request->input('password'));
+            $Partners->refer_code = substr(number_format(time() * rand(),0,'',''),0,6);
+            $Partners->save();
+            
+            if($request->input('refer_code')){
+                $refer_Partners = Partners::where('refer_code' , '=', $request->input('refer_code'))->first();
+                if($refer_Partners){
+                    $refer_Partners->referred = $refer_Partners->referred + 1;
+                    $refer_Partners->save();
+                }
+            }
+            return ['success' => true, 'data' => $Partners];
+        }else{
+            return ['success' => false, 'msg' => 'Phone Number Used'];
+        }
     }
 
     /**

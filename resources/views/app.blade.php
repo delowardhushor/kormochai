@@ -49,6 +49,18 @@
             </a>
           </li>
           <li>
+            <a href="{{route('clients.index')}}">
+              <i class="tim-icons icon-single-02"></i>
+              <p>Service Customers</p>
+            </a>
+          </li>
+          <li>
+            <a href="{{route('partners.index')}}">
+              <i class="tim-icons icon-single-02"></i>
+              <p>Service Partners</p>
+            </a>
+          </li>
+          <li>
             <a href="{{route('locations.index')}}">
               <i class="tim-icons icon-pin"></i>
               <p>Location</p>
@@ -61,10 +73,24 @@
             </a>
           </li>
           <li>
+            <a href="{{route('clicats.index')}}">
+              <i class="tim-icons icon-puzzle-10"></i>
+              <p>Customer Category</p>
+            </a>
+          </li>
+          <li>
+            <a href="{{route('parcats.index')}}">
+              <i class="tim-icons icon-puzzle-10"></i>
+              <p>Service Category</p>
+            </a>
+          </li>
+          <li>
             <a href="{{route('educatives.index')}}">
               <i class="tim-icons icon-world"></i>
               <p>Educatives</p>
             </a>
+          </li>
+          <li style="height: 100px">
           </li>
         </ul>
       </div>

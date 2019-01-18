@@ -22,8 +22,12 @@ Route::group(['middleware' => 'cors'], function(){
     Route::post('/employees/update', 'EmployeesController@update');
     Route::resource('employers', 'EmployersController');
     Route::resource('jobs', 'JobsController');
+    Route::post('/clients', 'ClientsController@store');
+    Route::post('/partners', 'PartnersController@store');
     Route::post('/intervalJob', 'JobsController@intervalJob');
     Route::resource('applications', 'EmployeesJobsController');
     Route::post('/employees/login', 'EmployeesController@login');
     Route::post('/employers/login', 'EmployersController@login');
+    Route::post('/clients/login', 'ClientsController@login');
+    Route::post('/partners/login', 'PartnersController@login');
 });
