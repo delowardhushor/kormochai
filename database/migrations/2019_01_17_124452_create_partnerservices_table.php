@@ -27,7 +27,7 @@ class CreatePartnerservicesTable extends Migration
             $table->string('pre_thana');
             $table->string('pre_district');
             $table->string('pre_house');
-            $table->string('profession');
+            $table->text('profession');
             $table->timestamps();
         });
     }

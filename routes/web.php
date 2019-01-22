@@ -26,8 +26,15 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('locations', 'LocationsController');
 
     Route::resource('cats', 'CatsController');
+
     Route::resource('parcats', 'ParcatsController');
+    Route::post('/parcats/addqus', 'ParcatsController@addqus');
+    Route::post('/parcats/delqus', 'ParcatsController@delqus');
+
+
     Route::resource('clicats', 'ClicatsController');
+    Route::post('/clicats/addqus', 'ClicatsController@addqus');
+    Route::post('/clicats/delqus', 'ClicatsController@delqus');
 
     Route::resource('educatives', 'EducativesController');
     Route::post('/dellocations' ,'LocationsController@destroy');

@@ -43,15 +43,35 @@ class ClicatsController extends Controller
         return redirect()->route('clicats.index')->with('success', 'Category Added');
     }
 
+    public function addqus(Request $request){
+        $clicats = Clicats::find($request->input('id'));
+        $questions = json_decode($clicats->question, true);
+        $addarray = array("qus"=>$request->input('question'), "ans"=> "");
+        array_push($questions, $addarray);
+        $clicats->question = json_encode($questions);
+        $clicats->save();
+        return view('clicatsdetails')->with(compact('clicats'));
+    }
+
+    public function delqus(Request $request){
+        $clicats = Clicats::find($request->input('id'));
+        $questions = json_decode($clicats->question, true);
+        array_splice($questions, $request->input('index'), 1);
+        $clicats->question = json_encode($questions);
+        $clicats->save();
+        return view('clicatsdetails')->with(compact('clicats'));
+    }
+
     /**
      * Display the specified resource.
      *
      * @param  \App\Clicats  $clicats
      * @return \Illuminate\Http\Response
      */
-    public function show(Clicats $clicats)
+    public function show($clicats)
     {
-        //
+        $clicats = Clicats::find($clicats);
+        return view('clicatsdetails')->with(compact('clicats'));
     }
 
     /**

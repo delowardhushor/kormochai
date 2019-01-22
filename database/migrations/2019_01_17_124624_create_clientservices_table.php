@@ -18,7 +18,7 @@ class CreateClientservicesTable extends Migration
             $table->string('clients_id');
             $table->string('name');
             $table->string('phone');
-            $table->string('service');
+            $table->text('service');
             $table->string('area');
             $table->string('thana');
             $table->string('district');

@@ -43,15 +43,35 @@ class ParcatsController extends Controller
         return redirect()->route('parcats.index')->with('success', 'Category Added');
     }
 
+    public function addqus(Request $request){
+        $parcats = Parcats::find($request->input('id'));
+        $questions = json_decode($parcats->question, true);
+        $addarray = array("qus"=>$request->input('question'), "ans"=> "");
+        array_push($questions, $addarray);
+        $parcats->question = json_encode($questions);
+        $parcats->save();
+        return view('parcatsdetails')->with(compact('parcats'));
+    }
+
+    public function delqus(Request $request){
+        $parcats = Parcats::find($request->input('id'));
+        $questions = json_decode($parcats->question, true);
+        array_splice($questions, $request->input('index'), 1);
+        $parcats->question = json_encode($questions);
+        $parcats->save();
+        return view('parcatsdetails')->with(compact('parcats'));
+    }
+
     /**
      * Display the specified resource.
      *
      * @param  \App\Parcats  $parcats
      * @return \Illuminate\Http\Response
      */
-    public function show(Parcats $parcats)
+    public function show($parcats)
     {
-        //
+        $parcats = Parcats::find($parcats);
+        return view('parcatsdetails')->with(compact('parcats'));
     }
 
     /**

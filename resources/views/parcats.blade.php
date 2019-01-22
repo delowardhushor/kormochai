@@ -61,9 +61,9 @@
                   @endforeach
                 </td>
                 <td class="text-center">
-                  <button class="btn btn-sm btn-fill btn-primary">
-                    <i class="fa fa-search"></i>
-                  </button>
+
+                  <a href="{{url('parcats/'.$parcat->id)}}"  class="btn btn-fill btn-primary btn-sm"><i class="fa fa-search"></i></a>
+
                   <button class="btn btn-sm btn-fill btn-primary"
                   onclick="event.preventDefault();
                     if(confirm('Delete parcategory')){

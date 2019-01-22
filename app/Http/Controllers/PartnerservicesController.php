@@ -35,7 +35,23 @@ class PartnerservicesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $partnerservices = new Partnerservices;
+        $partnerservices->partners_id = $request->input('partners_id');
+        $partnerservices->name = $request->input('name');
+        $partnerservices->phone = $request->input('phone');
+        $partnerservices->company_name = $request->input('company_name');
+        $partnerservices->service = $request->input('service');
+        $partnerservices->per_area = $request->input('per_area');
+        $partnerservices->per_thana = $request->input('per_thana');
+        $partnerservices->per_district = $request->input('per_district');
+        $partnerservices->per_house = $request->input('per_house');
+        $partnerservices->pre_area = $request->input('pre_area');
+        $partnerservices->pre_thana = $request->input('pre_thana');
+        $partnerservices->pre_district = $request->input('pre_district');
+        $partnerservices->pre_house = $request->input('pre_house');
+        $partnerservices->profession = $request->input('profession');
+        $partnerservices->save();
+        return ['success' => true];
     }
 
     /**

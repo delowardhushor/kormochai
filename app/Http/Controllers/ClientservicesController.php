@@ -35,7 +35,17 @@ class ClientservicesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $clientservices = new Clientservices;
+        $clientservices->clients_id = $request->input('clients_id');
+        $clientservices->name = $request->input('name');
+        $clientservices->phone = $request->input('phone');
+        $clientservices->service = $request->input('service');
+        $clientservices->area = $request->input('area');
+        $clientservices->thana = $request->input('thana');
+        $clientservices->district = $request->input('district');
+        $clientservices->house = $request->input('house');
+        $clientservices->save();
+        return ['success' => true];
     }
 
     /**

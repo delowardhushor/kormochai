@@ -47,31 +47,30 @@
               </tr>
             </thead>
             <tbody>
-              @foreach($clicats as $clicats)
+              @foreach($clicats as $clicat)
               <tr>
                 <td>
-                  {{$clicats->cat}}
+                  {{$clicat->cat}}
                 </td>
                 <td>
                   <?php 
-                      $questions = json_decode($clicats->question, true); 
+                      $questions = json_decode($clicat->question, true); 
                   ?>
                   @foreach($questions as $question)
                       <li>{{$question['qus']}}</li>
                   @endforeach
                 </td>
                 <td class="text-center">
-                  <button class="btn btn-sm btn-fill btn-primary">
-                    <i class="fa fa-search"></i>
-                  </button>
+                  <a href="{{url('clicats/'.$clicat->id)}}"  class="btn btn-fill btn-primary btn-sm"><i class="fa fa-search"></i></a>
+
                   <button class="btn btn-sm btn-fill btn-primary"
                   onclick="event.preventDefault();
                     if(confirm('Delete clicatsegory')){
-                    document.getElementById('delete-form-{{$clicats->id}}').submit();
+                    document.getElementById('delete-form-{{$clicat->id}}').submit();
                   }">delete</button>
-                  <form id="delete-form-{{$clicats->id}}" action="{{ url('/delclicats') }}" method="POST" style="display: none;">
+                  <form id="delete-form-{{$clicat->id}}" action="{{ url('/delclicats') }}" method="POST" style="display: none;">
                           @csrf
-                          <input value="{{$clicats->id}}" name="id" />
+                          <input value="{{$clicat->id}}" name="id" />
                       </form>
                 </td>
               </tr>

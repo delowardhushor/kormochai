@@ -30,4 +30,7 @@ Route::group(['middleware' => 'cors'], function(){
     Route::post('/employers/login', 'EmployersController@login');
     Route::post('/clients/login', 'ClientsController@login');
     Route::post('/partners/login', 'PartnersController@login');
+
+    Route::post('/clientservices', 'ClientservicesController@store');
+    Route::post('/partnerservices', 'PartnerservicesController@store');
 });
