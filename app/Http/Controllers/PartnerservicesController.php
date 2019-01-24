@@ -39,8 +39,8 @@ class PartnerservicesController extends Controller
         $partnerservices->partners_id = $request->input('partners_id');
         $partnerservices->name = $request->input('name');
         $partnerservices->phone = $request->input('phone');
-        $partnerservices->company_name = $request->input('company_name');
-        $partnerservices->service = $request->input('service');
+        $partnerservices->compnay_name = $request->input('company_name');
+        //$partnerservices->service = $request->input('service');
         $partnerservices->per_area = $request->input('per_area');
         $partnerservices->per_thana = $request->input('per_thana');
         $partnerservices->per_district = $request->input('per_district');

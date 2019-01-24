@@ -10,6 +10,8 @@ use App\Locations;
 use App\Educatives;
 use App\Clients;
 use App\Partners;
+use App\Clicats;
+use App\Parcats;
 use Illuminate\Http\Request;
 
 use App\Http\Resources\Jobs as JobResource;
@@ -136,6 +138,8 @@ class JobsController extends Controller
         $myJobs = [];
         $Jobs = Jobs::orderBy('id', 'desc')->get();
         $Cats = Cats::all();
+        $clicats = Clicats::all();
+        $parcats = Parcats::all();
         $Locations = Locations::all();
         $Educatives = Educatives::orderBy('id', 'desc')->get();
         if($request->id){
@@ -151,6 +155,6 @@ class JobsController extends Controller
 
             //$myJobs = $request->usertype == 'employees' ? Employees::find($request->id)->jobs : Employers::find($request->id)->jobs;
         }
-        return ['success' => true, 'jobs' => $Jobs, 'myJobs' => $myJobs, 'cats' => $Cats, 'locations' => $Locations, 'educatives' => $Educatives];
+        return ['success' => true, 'jobs' => $Jobs, 'myJobs' => $myJobs, 'cats' => $Cats , 'clicats' => $clicats , 'parcats' => $parcats , 'locations' => $Locations, 'educatives' => $Educatives];
     }
 }
