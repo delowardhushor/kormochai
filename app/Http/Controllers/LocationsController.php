@@ -37,7 +37,7 @@ class LocationsController extends Controller
     public function store(Request $request)
     {
         $locations = new Locations;
-        $locations->locations = $request->input('locations');
+        $locations->location = $request->input('location');
         $locations->save();
         return redirect()->route('locations.index')->with('success', 'Locations Added'); 
     }

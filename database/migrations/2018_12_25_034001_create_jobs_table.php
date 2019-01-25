@@ -29,6 +29,18 @@ class CreateJobsTable extends Migration
             $table->string('job_date')->nullable();
             $table->string('job_type');
             $table->string('category');
+
+            $table->string('name');
+            $table->string('mobile');
+            $table->string('area');
+            $table->string('thana');
+            $table->string('zila');
+            $table->string('house');
+            $table->string('admin_salary')->nullable();
+            $table->string('salary_date');
+            $table->string('employee_number');
+            $table->string('active')->default(0);
+
             $table->timestamps();
         });
     }

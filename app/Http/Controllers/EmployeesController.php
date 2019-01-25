@@ -115,6 +115,12 @@ class EmployeesController extends Controller
         $Employees->post = $request->post;
         $Employees->thana = $request->thana;
         $Employees->district = $request->district;
+
+        $Employees->perarea = $request->perarea;
+        $Employees->perpost = $request->perpost;
+        $Employees->perthana = $request->perthana;
+        $Employees->perdistrict = $request->perdistrict;
+
         $Employees->save();
         return ['success' => true, 'employees' => $Employees];
     }

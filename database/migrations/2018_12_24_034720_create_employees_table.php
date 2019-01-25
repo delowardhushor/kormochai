@@ -28,6 +28,13 @@ class CreateEmployeesTable extends Migration
             $table->string('thana')->nullable();
             $table->string('district')->nullable();
             $table->string('referred')->default(0);
+
+            $table->string('perarea')->nullable();
+            $table->string('perpost')->nullable();
+            $table->string('perthana')->nullable();
+            $table->string('perdistrict')->nullable();
+
+
             $table->timestamps();
         });
     }

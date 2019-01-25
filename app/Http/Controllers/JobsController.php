@@ -61,6 +61,16 @@ class JobsController extends Controller
         $Jobs->job_date = $request->input('job_date');
         $Jobs->job_type = $request->input('job_type');
         $Jobs->category = $request->input('category');
+
+        $Jobs->name = $request->input('name');
+        $Jobs->mobile = $request->input('mobile');
+        $Jobs->area = $request->input('area');
+        $Jobs->thana = $request->input('thana');
+        $Jobs->zila = $request->input('zila');
+        $Jobs->house = $request->input('house');
+        $Jobs->salary_date = $request->input('salary_date');
+        $Jobs->employee_number = $request->input('employee_number');
+
         if($Jobs->save()){
             return ['success' => true, 'Jobs' => $Jobs];
         }else{
@@ -136,7 +146,7 @@ class JobsController extends Controller
     public function intervalJob(Request $request)
     {
         $myJobs = [];
-        $Jobs = Jobs::orderBy('id', 'desc')->get();
+        $Jobs = Jobs::orderBy('id', 'desc')->get()->where('active', '=', '1');
         $Cats = Cats::all();
         $clicats = Clicats::all();
         $parcats = Parcats::all();
@@ -146,11 +156,11 @@ class JobsController extends Controller
             if($request->usertype == 'employees'){
                 $myJobs = Employees::find($request->id)->jobs;
             }elseif($request->usertype == 'employers'){
-                $myJobs = Employers::find($request->id)->jobs;
+                $myJobs = Employers::find($request->id)->jobs->where('active', '=', '1');
             }elseif($request->usertype == 'clients'){
-                $myJobs = Clients::all();
+                $myJobs = Clients::find($request->id)->services;
             }elseif($request->usertype == 'partners'){
-                $myJobs = Partners::all();
+                $myJobs = Partners::find($request->id)->services;
             }
 
             //$myJobs = $request->usertype == 'employees' ? Employees::find($request->id)->jobs : Employers::find($request->id)->jobs;
