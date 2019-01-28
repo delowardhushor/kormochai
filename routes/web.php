@@ -19,7 +19,11 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('partners', 'PartnersController');
     Route::resource('clients', 'ClientsController');
     Route::resource('jobs', 'JobsController');
+    Route::resource('clientservices', 'ClientservicesController');
+    Route::resource('partnerservices', 'PartnerservicesController');
     Route::post('/intervalJob', 'JobsController@intervalJob');
+
+    Route::post('/job/update', 'JobsController@update');
     Route::resource('applications', 'EmployeesJobsController');
     Route::post('/employees/login', 'EmployeesController@login');
     Route::post('/employers/login', 'EmployersController@login');

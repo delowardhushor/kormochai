@@ -9,7 +9,27 @@
         <h5 class="title">{{$Job->job_title}}'s Details</h5>
       </div>
       <div class="card-body">
-        <form>
+        <form method="POST" action="{{url('job/update')}}">
+          @csrf
+          <input type="text" style="display: none;" value="{{$Job->id}}" name="id" />
+          <div class="row">
+            <div class="col-md-6 pr-md-1">
+              <div class="form-group">
+                <label>Name</label>
+                <div type="text" class="form-control" >
+                  {{$Job->name}}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 pr-md-1">
+              <div class="form-group">
+                <label>Mobile</label>
+                <div type="text" class="form-control" >
+                  {{$Job->mobile}}
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="row">
             <div class="col-md-6 pr-md-1">
               <div class="form-group">
@@ -24,6 +44,42 @@
                 <label>Company Name</label>
                 <div type="text" class="form-control" >
                   {{$Job->company_name}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 pr-md-1">
+              <div class="form-group">
+                <label>Area</label>
+                <div type="text" class="form-control" >
+                  {{$Job->area}}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 pr-md-1">
+              <div class="form-group">
+                <label>Thana</label>
+                <div type="text" class="form-control" >
+                  {{$Job->thana}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 pr-md-1">
+              <div class="form-group">
+                <label>District</label>
+                <div type="text" class="form-control" >
+                  {{$Job->zila}}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 pr-md-1">
+              <div class="form-group">
+                <label>House</label>
+                <div type="text" class="form-control" >
+                  {{$Job->house}}
                 </div>
               </div>
             </div>
@@ -57,9 +113,35 @@
             </div>
             <div class="col-md-6 pr-md-1">
               <div class="form-group">
+                <label>Admin Salary</label>
+                <input value="{{$Job->admin_salary}}" name="admin_salary" type="text" class="form-control" >
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 pr-md-1">
+              <div class="form-group">
+                <label>Salary Date</label>
+                <div type="text" class="form-control" >
+                  {{$Job->salary_date}}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 pr-md-1">
+              <div class="form-group">
                 <label>Office Hour</label>
                 <div type="text" class="form-control" >
                   {{$Job->office_hour}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 pr-md-1">
+              <div class="form-group">
+                <label>Number of Employee</label>
+                <div type="text" class="form-control" >
+                  {{$Job->employee_number}}
                 </div>
               </div>
             </div>
@@ -115,21 +197,16 @@
           <div class="row">
             <div class="col-md-12">
               <div class="form-group">
-                <label>Educational Requirment</label>
+                <label>Job Responsibility</label>
                 <div type="text" class="form-control" >
-                  {{$Job->education}}
+                  {{$Job->job_responsibility}}
                 </div>
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-md-12">
-              <div class="form-group">
-                <label>Job Responsibility</label>
-                <div type="text" class="form-control" >
-                  {{$Job->job_responsibility}}
-                </div>
-              </div>
+              <button class="btn btn-sm btn-primary" type="submit">Update</button>
             </div>
           </div>
         </form>

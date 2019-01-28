@@ -14,7 +14,8 @@ class PartnerservicesController extends Controller
      */
     public function index()
     {
-        //
+        $partnerservices = Partnerservices::orderBy('id', 'desc')->paginate(50);
+        return view('partnerservices')->with(compact("partnerservices"));
     }
 
     /**
@@ -60,9 +61,10 @@ class PartnerservicesController extends Controller
      * @param  \App\Partnerservices  $partnerservices
      * @return \Illuminate\Http\Response
      */
-    public function show(Partnerservices $partnerservices)
+    public function show($id)
     {
-        //
+        $partnerservices = Partnerservices::find($id);
+        return view('servicedetails')->with(compact("partnerservices"));
     }
 
     /**

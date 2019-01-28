@@ -17,6 +17,7 @@ class CreateEmployersTable extends Migration
             $table->increments('id');
             $table->string('phone');
             $table->string('password');
+            $table->string('refer_code')->nullable();
             $table->timestamps();
         });
     }

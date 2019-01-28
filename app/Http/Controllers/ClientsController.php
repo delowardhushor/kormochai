@@ -34,6 +34,16 @@ class ClientsController extends Controller
         }
     }
 
+    public function exist(Request $request)
+    {
+        $Clients = Clients::where("phone", "=", $request->input('phone'))->first();
+        if($Clients == ''){
+            return ['success' => true];
+        }else{
+            return ['success' => false];
+        }
+    }
+
     /**
      * Show the form for creating a new resource.
      *

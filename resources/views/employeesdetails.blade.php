@@ -14,17 +14,13 @@
             <div class="col-md-6 pr-md-1">
               <div class="form-group">
                 <label>Name</label>
-                <div type="text" class="form-control" >
-                  {{$employee->name}}
-                </div>
+                <input type="text" class="form-control" value="{{$employee->name}}" />
               </div>
             </div>
             <div class="col-md-6 pr-md-1">
               <div class="form-group">
                 <label>Age</label>
-                <div type="text" class="form-control" >
-                  {{$employee->age}}
-                </div>
+                <input type="text" class="form-control" value="{{$employee->age}}" />
               </div>
             </div>
           </div>
@@ -32,84 +28,36 @@
             <div class="col-md-6 pr-md-1">
               <div class="form-group">
                 <label>Phone</label>
-                <div type="text" class="form-control" >
-                  {{$employee->phone}}
-                </div>
+                <input type="text" class="form-control" value="{{$employee->phone}}" />
               </div>
             </div>
             <div class="col-md-6 pr-md-1">
               <div class="form-group">
                 <label>Refer Code</label>
-                <div type="text" class="form-control" >
-                  {{$employee->refer_code}}
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card ">
-                <div class="card-header">
-                  <h4 class="card-title">Employee Education Details</h4>
-                </div>
-                <div class="card-body">
-                  <div class="table-responsive">
-                    <table class="table tablesorter" id="">
-                      <thead class=" text-primary">
-                        <tr>
-                          <th>
-                            Institution Name
-                          </th>
-                          <th>
-                            Degree Name
-                          </th>
-                          <th>
-                            Result
-                          </th>
-                          <th>
-                            Time
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                      @foreach(json_decode($employee->education, true) as $education)
-                        <tr>
-                          <td>
-                            {{$education['institutionName']}}
-                          </td>
-                          <td>
-                            {{$education['degreeName']}}
-                          </td>
-                          <td>
-                            {{$education['result']}}
-                          </td>
-                          <td>
-                            {{$education['startDate']}} - <?php if($education['endDate'] == ''){ echo 'Present';}else{echo $education['endDate']; }?>
-                          </td>
-                        </tr>
-                      @endforeach
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
+                <input type="text" class="form-control" value="{{$employee->refer_code}}" />
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-md-6 pr-md-1">
               <div class="form-group">
+                <label>Education</label>
+                <input type="text" class="form-control" value="{{$employee->education}}" />
+              </div>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-md-6 pr-md-1">
+              <div class="form-group">
                 <label>Reffered</label>
-                <div type="text" class="form-control" >
-                  {{$employee->referred}}
-                </div>
+                <input type="text" class="form-control" value="{{$employee->referred}}" />
               </div>
             </div>
             <div class="col-md-6 pr-md-1">
               <div class="form-group">
                 <label>Area</label>
-                <div type="text" class="form-control" >
-                  {{$employee->area}}
-                </div>
+                <input type="text" class="form-control" value="{{$employee->area}}" />
               </div>
             </div>
           </div>
@@ -117,17 +65,13 @@
             <div class="col-md-6 pr-md-1">
               <div class="form-group">
                 <label>Post</label>
-                <div type="text" class="form-control" >
-                  {{$employee->post}}
-                </div>
+                <input type="text" class="form-control" value="{{$employee->post}}" />
               </div>
             </div>
             <div class="col-md-6 pr-md-1">
               <div class="form-group">
                 <label>Thana</label>
-                <div type="text" class="form-control" >
-                  {{$employee->thana}}
-                </div>
+                <input type="text" class="form-control" value="{{$employee->thana}}" />
               </div>
             </div>
           </div>
@@ -135,9 +79,7 @@
             <div class="col-md-6 pr-md-1">
               <div class="form-group">
                 <label>District</label>
-                <div type="text" class="form-control" >
-                  {{$employee->district}}
-                </div>
+                <input type="text" class="form-control" value="{{$employee->district}}" />
               </div>
             </div>
           </div>
@@ -145,9 +87,7 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label>Address</label>
-                <div type="text" class="form-control" >
-                  {{$employee->address}}
-                </div>
+                <input type="text" class="form-control" value="{{$employee->address}}" />
               </div>
             </div>
           </div>

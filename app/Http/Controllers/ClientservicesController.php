@@ -14,7 +14,8 @@ class ClientservicesController extends Controller
      */
     public function index()
     {
-        //
+        $clientservices = Clientservices::orderBy('id', 'desc')->paginate(50);
+        return view('clientservices')->with(compact("clientservices"));
     }
 
     /**
@@ -54,9 +55,10 @@ class ClientservicesController extends Controller
      * @param  \App\Clientservices  $clientservices
      * @return \Illuminate\Http\Response
      */
-    public function show(Clientservices $clientservices)
+    public function show($id)
     {
-        //
+        $clientservices = Clientservices::find($id);
+        return view('servicerequestdetails')->with(compact("clientservices"));
     }
 
     /**

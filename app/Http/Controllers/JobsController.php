@@ -108,28 +108,26 @@ class JobsController extends Controller
      * @param  \App\Jobs  $jobs
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Jobs $jobs)
+    public function update(Request $request)
     {
-        $Jobs = Jobs::find($jobs);
-        $Jobs->employers_id = $request->input('employers_id');
-        $Jobs->company_name = $request->input('company_name');
-        $Jobs->job_title = $request->input('job_title');
-        $Jobs->education = $request->input('education');
-        $Jobs->salary = $request->input('salary');
-        $Jobs->salary_type = $request->input('salary_type');
-        $Jobs->office_hour = $request->input('office_hour');
-        $Jobs->location = $request->input('location');
-        $Jobs->job_responsibility = $request->input('job_responsibility');
-        $Jobs->interview = $request->input('interview');
-        $Jobs->interview_date = $request->input('interview_date');
-        $Jobs->job_date = $request->input('job_date');
-        $Jobs->job_type = $request->input('job_type');
-        $Jobs->category = $request->input('category');
-        if($Jobs->save()){
-            return ['success' => true, 'Jobs' => $Jobs];
-        }else{
-            return ['success' => false, 'msg' => 'Fill Empty'];
-        }
+        $Jobs = Jobs::find($request->input('id'));
+        // $Jobs->employers_id = $request->input('employers_id');
+        // $Jobs->company_name = $request->input('company_name');
+        // $Jobs->job_title = $request->input('job_title');
+        // $Jobs->education = $request->input('education');
+        // $Jobs->salary = $request->input('salary');
+        // $Jobs->salary_type = $request->input('salary_type');
+        // $Jobs->office_hour = $request->input('office_hour');
+        // $Jobs->location = $request->input('location');
+        // $Jobs->job_responsibility = $request->input('job_responsibility');
+        // $Jobs->interview = $request->input('interview');
+        // $Jobs->interview_date = $request->input('interview_date');
+        // $Jobs->job_date = $request->input('job_date');
+        // $Jobs->job_type = $request->input('job_type');
+        // $Jobs->category = $request->input('category');
+        $Jobs->admin_salary = $request->input('admin_salary');
+        $Jobs->save();
+        return redirect()->route('home');
     }
 
     /**
@@ -146,7 +144,7 @@ class JobsController extends Controller
     public function intervalJob(Request $request)
     {
         $myJobs = [];
-        $Jobs = Jobs::orderBy('id', 'desc')->get()->where('active', '=', '1');
+        $Jobs = Jobs::all()->where('active', '=', 1);
         $Cats = Cats::all();
         $clicats = Clicats::all();
         $parcats = Parcats::all();

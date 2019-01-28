@@ -44,6 +44,16 @@ class PartnersController extends Controller
         }
     }
 
+    public function exist(Request $request)
+    {
+        $partners = Partners::where("phone", "=", $request->input('phone'))->first();
+        if($partners == ''){
+            return ['success' => true];
+        }else{
+            return ['success' => false];
+        }
+    }
+
     /**
      * Store a newly created resource in storage.
      *

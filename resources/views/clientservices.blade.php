@@ -1,12 +1,12 @@
 @extends('app')
-@section('title', 'Employees')
+@section('title', 'Services')
 
 @section('content')
 <div class="row">
   <div class="col-md-12">
     <div class="card ">
       <div class="card-header">
-        <h4 class="card-title">All Employees</h4>
+        <h4 class="card-title">ALL Requested Service</h4>
       </div>
       <div class="card-body">
         <div class="table-responsive">
@@ -20,19 +20,10 @@
                   Phone
                 </th>
                 <th>
-                  Age
-                </th>
-                <th>
-                  Gender
+                  District
                 </th>
                 <th >
-                  EDucation
-                </th>
-                <th >
-                  Refer Code
-                </th>
-                <th>
-                  Referred
+                  Service
                 </th>
                 <th class="text-center">
                   Action
@@ -40,32 +31,25 @@
               </tr>
             </thead>
             <tbody>
-            @foreach($employees as $employee)
+            @foreach($clientservices as $clientservice)
               <tr>
                 <td>
-                  {{$employee->name}}
+                  {{$clientservice->name}}
                 </td>
                 <td>
-                  {{$employee->phone}}
+                  {{$clientservice->phone}}
                 </td>
                 <td>
-                  {{$employee->age}}
+                  {{$clientservice->district}}
                 </td>
                 <td>
-                  {{$employee->gender}}
+                  <?php 
+                    $service = json_decode($clientservice->service, true);
+                  ?>
+                  {{$service['cat']}}
                 </td>
-                <td>
-                  {{$employee->education}}
-                </td>
-                <td>
-                  {{$employee->refer_code}}
-                </td>
-                <td>
-                  {{$employee->referred}}
-                </td>
-                
                 <td class="text-center">
-                  <a href="{{url('employees/'.$employee->id)}}"  class="btn btn-fill btn-primary btn-sm"><i class="fa fa-search"></i></a>
+                  <a href="{{url('clientservices/'.$clientservice->id)}}"  class="btn btn-fill btn-primary btn-sm"><i class="fa fa-search"></i></a>
                 </td>
               </tr>
             @endforeach

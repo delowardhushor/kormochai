@@ -34,6 +34,16 @@ class EmployeesController extends Controller
         }
     }
 
+    public function exist(Request $request)
+    {
+        $Employees = Employees::where("phone", "=", $request->input('phone'))->first();
+        if($Employees == ''){
+            return ['success' => true];
+        }else{
+            return ['success' => false];
+        }
+    }
+
     /**
      * Show the form for creating a new resource.
      *

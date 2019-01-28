@@ -41,7 +41,17 @@ class EmployersController extends Controller
             $Employers = new Employers;
             $Employers->phone = $request->input('phone');
             $Employers->password = Hash::make($request->input('phone'));
+            $Employers->refer_code = substr(number_format(time() * rand(),0,'',''),0,6);
             $Employers->save();
+
+            if($request->input('refer_code')){
+                $refer_Employers = Employers::where('refer_code' , '=', $request->input('refer_code'))->first();
+                if($refer_Employers){
+                    $refer_Employers->referred = $refer_Employers->referred + 1;
+                    $refer_Employers->save();
+                }
+            }
+
             return ['success' => true, 'data' => $Employers];
         }else{
             return ['success' => false, 'msg' => 'Phone Number Used'];
@@ -57,6 +67,16 @@ class EmployersController extends Controller
             return ['success' => true, 'data' => $Employers];
         }else{
             return ['success' => false, 'msg' => 'Invalid Information'];
+        }
+    }
+
+    public function exist(Request $request)
+    {
+        $Employers = Employers::where("phone", "=", $request->input('phone'))->first();
+        if($Employers == ''){
+            return ['success' => true];
+        }else{
+            return ['success' => false];
         }
     }
 

@@ -43,6 +43,18 @@
             </a>
           </li>
           <li>
+            <a href="{{route('partnerservices.index')}}">
+              <i class="fa fa-industry"></i>
+              <p>Services</p>
+            </a>
+          </li>
+          <li>
+            <a href="{{route('clientservices.index')}}">
+              <i class="fa fa-industry"></i>
+              <p>Service Request</p>
+            </a>
+          </li>
+          <li>
             <a href="{{route('employees.index')}}">
               <i class="tim-icons icon-single-02"></i>
               <p>Employees</p>
