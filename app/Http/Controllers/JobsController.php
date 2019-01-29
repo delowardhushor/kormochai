@@ -126,6 +126,7 @@ class JobsController extends Controller
         // $Jobs->job_type = $request->input('job_type');
         // $Jobs->category = $request->input('category');
         $Jobs->admin_salary = $request->input('admin_salary');
+        $Jobs->active = $request->input('publish');
         $Jobs->save();
         return redirect()->route('home');
     }
@@ -164,5 +165,26 @@ class JobsController extends Controller
             //$myJobs = $request->usertype == 'employees' ? Employees::find($request->id)->jobs : Employers::find($request->id)->jobs;
         }
         return ['success' => true, 'jobs' => $Jobs, 'myJobs' => $myJobs, 'cats' => $Cats , 'clicats' => $clicats , 'parcats' => $parcats , 'locations' => $Locations, 'educatives' => $Educatives];
+    }
+
+    public function sentsms(Request $request){
+        try{ 
+            $soapClient = new SoapClient("https://api2.onnorokomSMS.com/sendSMS.asmx?wsdl"); 
+            $paramArray = array( 
+                'userName' => "01909014645", 
+                'userPassword' => "aymansadik", 
+                //'mobileNumber' => $request->input('phone'), 
+                'mobileNumber' => '01940084384', 
+                'smsText' => "sdfsfdfsdf", 
+                //'smsText' => "Your Verification pin is : ".$request->input('pin')." - KORMOCHAI", 
+                'type' => "TEXT", 
+                'maskName' => '', 
+                'campaignName' => '', ); 
+            $value = $soapClient->__call("OneToOne", array($paramArray)); 
+            echo json_encode(["success" => true]);
+        } 
+        catch (Exception $e) { 
+            return $e->getMessage(); 
+        }
     }
 }

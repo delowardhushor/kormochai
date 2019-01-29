@@ -39,5 +39,7 @@ Route::group(['middleware' => 'cors'], function(){
     Route::post('/clientservices', 'ClientservicesController@store');
     Route::post('/partnerservices', 'PartnerservicesController@store');
 
+    Route::post('/sentsms', 'JobsController@sentsms');
+
 
 });

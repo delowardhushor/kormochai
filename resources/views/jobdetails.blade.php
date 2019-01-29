@@ -206,6 +206,17 @@
           </div>
           <div class="row">
             <div class="col-md-12">
+              <div class="form-group">
+                <label style="margin-right: 20px;">Publish This Job</label>
+                <label style="margin-right: 5px">YES</label>
+                <input <?php if($Job->active == 1){echo'checked';} ?> style="margin-right: 20px" type="radio" name="publish" value="1">
+                <label style="margin-right: 5px">NO</label>
+                <input <?php if($Job->active == 0){echo'checked';} ?> type="radio" name="publish" value="0">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
               <button class="btn btn-sm btn-primary" type="submit">Update</button>
             </div>
           </div>

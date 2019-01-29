@@ -43,6 +43,12 @@
             </a>
           </li>
           <li>
+            <a href="{{url('/pendingjob')}}">
+              <i class="fa fa-industry"></i>
+              <p>Unpublish JOBS</p>
+            </a>
+          </li>
+          <li>
             <a href="{{route('partnerservices.index')}}">
               <i class="fa fa-industry"></i>
               <p>Services</p>

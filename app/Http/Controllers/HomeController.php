@@ -25,7 +25,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $Jobs = JobResource::collection(Jobs::orderBy('id', 'desc')->paginate(50));
+        $Jobs = JobResource::collection(Jobs::where('active', '=', 1)->orderBy('id', 'desc')->paginate(50));
+        return view('home')->with(compact("Jobs"));
+    }
+
+    public function pendingjob()
+    {
+        $Jobs = JobResource::collection(Jobs::where('active', '=', 0)->orderBy('id', 'desc')->paginate(50));
         return view('home')->with(compact("Jobs"));
     }
 }
