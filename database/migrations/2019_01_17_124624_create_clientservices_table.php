@@ -23,6 +23,10 @@ class CreateClientservicesTable extends Migration
             $table->string('thana');
             $table->string('district');
             $table->string('house');
+            $table->string('service_date');
+            $table->string('min');
+            $table->string('hour');
+            $table->string('ampm');
             $table->timestamps();
         });
     }

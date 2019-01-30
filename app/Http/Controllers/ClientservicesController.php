@@ -45,6 +45,12 @@ class ClientservicesController extends Controller
         $clientservices->thana = $request->input('thana');
         $clientservices->district = $request->input('district');
         $clientservices->house = $request->input('house');
+
+        $clientservices->service_date = $request->input('service_date');
+        $clientservices->min = $request->input('min');
+        $clientservices->hour = $request->input('hour');
+        $clientservices->ampm = $request->input('ampm');
+        
         $clientservices->save();
         return ['success' => true];
     }
