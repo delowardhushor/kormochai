@@ -32,7 +32,7 @@
               <div class="form-group">
                 <label>Company Name</label>
                 <div type="text" class="form-control" >
-                  {{$partnerservices->compnay_name}}
+                  {{$partnerservices->company_name}}
                 </div>
               </div>
             </div>
@@ -44,7 +44,7 @@
           <div class="row">
             <div class="col-md-6 pr-md-1">
               <div class="form-group">
-                <label>Service</label>
+                <label>Profession</label>
                 <div type="text" class="form-control" >
                   {{$profession['cat']}}
                 </div>

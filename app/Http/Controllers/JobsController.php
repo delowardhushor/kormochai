@@ -35,7 +35,14 @@ class JobsController extends Controller
      */
     public function create()
     {
-        //
+        $locations = Locations::all();
+        $cats = Cats::all();
+        return view('addjob')->with(compact("locations", "cats"));
+    }
+
+    public function print($id){
+        $Jobs = Jobs::find($id);
+        return view('print.job')->with(compact("Jobs"));
     }
 
     /**
@@ -70,11 +77,21 @@ class JobsController extends Controller
         $Jobs->house = $request->input('house');
         $Jobs->salary_date = $request->input('salary_date');
         $Jobs->employee_number = $request->input('employee_number');
+        $Jobs->employee_type = $request->input('employee_type');
+        $Jobs->admin_salary = $request->input('admin_salary');
+        $Jobs->min = $request->input('min');
+        $Jobs->hour = $request->input('hour');
+        $Jobs->ampm = $request->input('ampm');
+        $Jobs->details = $request->input('details');
+        if($request->input('from_web')){
+            $Jobs->active = $request->input('publish');
+        }
+        $Jobs->save();
 
-        if($Jobs->save()){
-            return ['success' => true, 'Jobs' => $Jobs];
+        if($request->input('from_web')){
+            return redirect()->route('home')->with('success', 'Job Added');
         }else{
-            return ['success' => false, 'msg' => 'Fill Empty'];
+            return ['success' => true, 'Jobs' => $Jobs];
         }
     }
 
@@ -145,7 +162,7 @@ class JobsController extends Controller
     public function intervalJob(Request $request)
     {
         $myJobs = [];
-        $Jobs = Jobs::all()->where('active', '=', 1);
+        $Jobs = Jobs::orderBy('id', 'desc')->get();
         $Cats = Cats::all();
         $clicats = Clicats::all();
         $parcats = Parcats::all();
@@ -155,7 +172,7 @@ class JobsController extends Controller
             if($request->usertype == 'employees'){
                 $myJobs = Employees::find($request->id)->jobs;
             }elseif($request->usertype == 'employers'){
-                $myJobs = Employers::find($request->id)->jobs->where('active', '=', '1');
+                $myJobs = Employers::find($request->id)->jobs;
             }elseif($request->usertype == 'clients'){
                 $myJobs = Clients::find($request->id)->services;
             }elseif($request->usertype == 'partners'){
@@ -173,10 +190,8 @@ class JobsController extends Controller
             $paramArray = array( 
                 'userName' => "01909014645", 
                 'userPassword' => "aymansadik", 
-                //'mobileNumber' => $request->input('phone'), 
-                'mobileNumber' => '01940084384', 
-                'smsText' => "sdfsfdfsdf", 
-                //'smsText' => "Your Verification pin is : ".$request->input('pin')." - KORMOCHAI", 
+                'mobileNumber' => $request->input('phone'), 
+                'smsText' => "Your Verification pin is : ".$request->input('pin')." - KORMOCHAI", 
                 'type' => "TEXT", 
                 'maskName' => '', 
                 'campaignName' => '', ); 

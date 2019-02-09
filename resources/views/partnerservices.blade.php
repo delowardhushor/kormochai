@@ -40,7 +40,7 @@
                   {{$partnerservice->phone}}
                 </td>
                 <td>
-                  {{$partnerservice->compnay_name}}
+                  {{$partnerservice->company_name}}
                 </td>
                 <td>
                   <?php 
@@ -50,6 +50,7 @@
                 </td>
                 <td class="text-center">
                   <a href="{{url('partnerservices/'.$partnerservice->id)}}"  class="btn btn-fill btn-primary btn-sm"><i class="fa fa-search"></i></a>
+                  <a href="{{url('printser/'.$partnerservice->id)}}"  class="btn btn-fill btn-primary btn-sm"><i class="fa fa-print"></i></a>
                 </td>
               </tr>
             @endforeach

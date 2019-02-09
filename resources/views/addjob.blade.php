@@ -1,32 +1,36 @@
 @extends('app')
-@section('title', "Job's Details")
+@section('title', "Post a Job")
+
+<style type="text/css">
+  option{
+    background-color: #525f7f;
+    color: #fff;
+  }
+</style>
 
 @section('content')
 <div class="row">
-  <div class="col-md-7">
+  <div class="col-md-12">
     <div class="card">
       <div class="card-header">
-        <h5 class="title">{{$Job->job_title}}'s Details</h5>
+        <h5 class="title">Job Details</h5>
       </div>
       <div class="card-body">
-        <form method="POST" action="{{url('job/update')}}">
+        <form method="POST" action="{{url('/jobs')}}">
           @csrf
-          <input type="text" style="display: none;" value="{{$Job->id}}" name="id" />
+          <input type="text" required style="display: none;" value="0" name="employers_id" />
+          <input type="text" required style="display: none;" value="true" name="from_web" />
           <div class="row">
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Name</label>
-                <div type="text" class="form-control" >
-                  {{$Job->name}}
-                </div>
+                <input type="text" required name="name" class="form-control" > 
               </div>
             </div>
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Mobile</label>
-                <div type="text" class="form-control" >
-                  {{$Job->mobile}}
-                </div>
+                <input type="text" required name="mobile" class="form-control" >
               </div>
             </div>
           </div>
@@ -34,17 +38,13 @@
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Job Title</label>
-                <div type="text" class="form-control" >
-                  {{$Job->job_title}}
-                </div>
+                <input type="text" required name="job_title" class="form-control" >
               </div>
             </div>
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Company Name</label>
-                <div type="text" class="form-control" >
-                  {{$Job->company_name}}
-                </div>
+                <input type="text" required name="company_name" class="form-control" >
               </div>
             </div>
           </div>
@@ -52,17 +52,13 @@
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Area</label>
-                <div type="text" class="form-control" >
-                  {{$Job->area}}
-                </div>
+                <input type="text" required name="area" class="form-control" >
               </div>
             </div>
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Thana</label>
-                <div type="text" class="form-control" >
-                  {{$Job->thana}}
-                </div>
+                <input type="text" required name="thana" class="form-control" >
               </div>
             </div>
           </div>
@@ -70,17 +66,13 @@
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>District</label>
-                <div type="text" class="form-control" >
-                  {{$Job->zila}}
-                </div>
+                <input type="text" required name="zila" class="form-control" >
               </div>
             </div>
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>House</label>
-                <div type="text" class="form-control" >
-                  {{$Job->house}}
-                </div>
+                <input type="text" required name="house" class="form-control" >
               </div>
             </div>
           </div>
@@ -88,17 +80,21 @@
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Job Location</label>
-                <div type="text" class="form-control" >
-                  {{$Job->location}}
-                </div>
+                <select type="text" required name="location" class="form-control" >
+                  @foreach($locations as $location)
+                  <option >{{$location->location}}</option>
+                  @endforeach
+                </select>
               </div>
             </div>
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Category</label>
-                <div type="text" class="form-control" >
-                  {{$Job->category}}
-                </div>
+                <select type="text" required name="category" class="form-control" >
+                  @foreach($cats as $cat)
+                  <option >{{$cat->cat}}</option>
+                  @endforeach
+                </select>
               </div>
             </div>
           </div>
@@ -106,15 +102,18 @@
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Salary</label>
-                <div type="text" class="form-control" >
-                  {{$Job->salary}} / {{$Job->salary_type}}
-                </div>
+                <input type="text" required style="display: none;" name="salary" value="not set" class="form-control" >
+                <select type="text" required name="salary_type" class="form-control" >
+                  <option value="monthly">monthly</option>
+                  <option value="weekly">weekly</option>
+                  <option value="daily">daily</option>
+                </select>
               </div>
             </div>
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Admin Salary</label>
-                <input value="{{$Job->admin_salary}}" name="admin_salary" type="text" class="form-control" >
+                <input value="" required name="admin_salary" type="text" class="form-control" >
               </div>
             </div>
           </div>
@@ -122,17 +121,13 @@
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Salary Date</label>
-                <div type="text" class="form-control" >
-                  {{$Job->salary_date}}
-                </div>
+                <input type="text" required required name="salary_date" class="form-control" >
               </div>
             </div>
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Office Hour</label>
-                <div type="text" class="form-control" >
-                  {{$Job->office_hour}}
-                </div>
+                <input type="text" required name="office_hour" class="form-control" >
               </div>
             </div>
           </div>
@@ -140,17 +135,17 @@
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Number of Employee</label>
-                <div type="text" class="form-control" >
-                  {{$Job->employee_number}}
-                </div>
+                <input type="text" required name="employee_number" class="form-control" >
               </div>
             </div>
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
-                <label>Male or Female</label>
-                <div type="text" class="form-control" >
-                  {{$Job->employee_type}}
-                </div>
+                <label>Male / Female?</label>
+                <select type="text" required name="employee_type" class="form-control" >
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="any">Any</option>
+                </select>
               </div>
             </div>
           </div>
@@ -158,37 +153,33 @@
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Interview Need?</label>
-                <div type="text" class="form-control" >
-                  <?php if($Job->interview){echo "Yes";}else{ echo'NO';} ?>
-                </div>
+                <select type="text" required name="interview" class="form-control" >
+                  <option value="true">Yes</option>
+                  <option value="false">No</option>
+                </select>
               </div>
             </div>
-            <?php if($Job->interview){?>
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Interview Date</label>
-                <div type="text" class="form-control" >
-                  {{$Job->interview_date}}
-                </div>
+                <input required type="date" name="interview_date" class="form-control" >
               </div>
             </div>
-          <?php } ?>
           </div>
           <div class="row">
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Job Type</label>
-                <div type="text" class="form-control" >
-                  {{$Job->job_type}}
-                </div>
+                <select type="text" required name="job_type" class="form-control" >
+                  <option value="parttime">Part Time</option>
+                  <option value="fulltime">Full Time</option>
+                </select>
               </div>
             </div>
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Job Date</label>
-                <div type="text" class="form-control" >
-                  {{$Job->job_date}}
-                </div>
+                <input type="date" required name="job_date" class="form-control" >
               </div>
             </div>
           </div>
@@ -196,9 +187,7 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label>Educational Requirment</label>
-                <div type="text" class="form-control" >
-                  {{$Job->education}}
-                </div>
+                <input type="text" required name="education" class="form-control" >
               </div>
             </div>
           </div>
@@ -206,9 +195,8 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label>Job Responsibility</label>
-                <div type="text" class="form-control" >
-                  {{$Job->job_responsibility}}
-                </div>
+                <textarea required="" class="form-control" name="job_responsibility" >
+                </textarea>
               </div>
             </div>
           </div>
@@ -216,16 +204,16 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label style="margin-right: 20px;">Publish This Job</label>
-                <label style="margin-right: 5px">YES</label>
-                <input <?php if($Job->active == 1){echo'checked';} ?> style="margin-right: 20px" type="radio" name="publish" value="1">
+                <label  style="margin-right: 5px">YES</label>
+                <input checked style="margin-right: 20px" type="radio" name="publish" value="1">
                 <label style="margin-right: 5px">NO</label>
-                <input <?php if($Job->active == 0){echo'checked';} ?> type="radio" name="publish" value="0">
+                <input type="radio" name="publish" value="0">
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-md-12">
-              <button class="btn btn-sm btn-primary" type="submit">Update</button>
+              <button class="btn btn-sm btn-primary" type="submit">Post</button>
             </div>
           </div>
         </form>
@@ -234,55 +222,6 @@
         <button type="submit" class="btn btn-fill btn-primary">Save</button>
       </div> -->
     </div>
-  </div>
-  <div class="col-md-5">
-    <div class="col-md-12">
-    <div class="card ">
-      <div class="card-header">
-        <h4 class="card-title">Who applied this job so far?</h4>
-      </div>
-      <div class="card-body">
-        <div class="table-responsive">
-          <table class="table tablesorter" id="">
-            <thead class=" text-primary">
-              <tr>
-                <th>
-                  Name
-                </th>
-                <th>
-                  Phone
-                </th>
-                <th>
-                  Age
-                </th>
-                <th class="text-center">
-                  Action
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-            @foreach($Job->employees as $employee)
-              <tr>
-                <td>
-                  {{$employee->name}}
-                </td>
-                <td>
-                  {{$employee->phone}}
-                </td>
-                <td>
-                  {{$employee->age}}
-                </td>
-                <td class="text-center">
-                  <a href="{{url('employees/'.$employee->id)}}"  class="btn btn-fill btn-primary btn-sm"><i class="fa fa-search"></i></a>
-                </td>
-              </tr>
-            @endforeach
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
   </div>
 </div>
 @endsection

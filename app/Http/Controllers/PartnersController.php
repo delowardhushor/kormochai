@@ -48,9 +48,20 @@ class PartnersController extends Controller
     {
         $partners = Partners::where("phone", "=", $request->input('phone'))->first();
         if($partners == ''){
-            return ['success' => true];
-        }else{
             return ['success' => false];
+        }else{
+            return ['success' => true];
+        }
+    }
+
+    public function cngpass(Request $request){
+        $Partners = Partners::where("phone", "=", $request->input('phone'))->first();
+        if($Partners == ''){
+           return "Are You Hacker"; 
+        }else{
+            $Partners->password = Hash::make($request->input('password'));
+            $Partners->save();
+            return ['success' => true, 'data' => $Partners];
         }
     }
 

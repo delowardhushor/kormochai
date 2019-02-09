@@ -6,7 +6,7 @@
   <div class="col-md-12">
     <div class="card ">
       <div class="card-header">
-        <h4 class="card-title">ALL JOBS</h4>
+        <h4 class="card-title">ALL JOBS <a class="btn btn-sm btn-primary pull-right" href="{{url('/jobs/create')}}">Add</a></h4>
       </div>
       <div class="card-body">
         <div class="table-responsive">
@@ -21,6 +21,9 @@
                 </th>
                 <th>
                   Salary
+                </th>
+                <th>
+                  Admin Salary
                 </th>
                 <th >
                   Posted By
@@ -46,13 +49,23 @@
                   ৳ {{$Job->salary}} / {{$Job->salary_type}}
                 </td>
                 <td>
-                  {{$Job->employers->phone}}
+                  ৳ {{$Job->admin_salary}}
+                </td>
+                <td>
+                  <?php 
+                    if($Job->employers_id > 0){
+                      echo $Job->employers->phone;
+                    }else{
+                      echo "Admin";
+                    }
+                  ?>
                 </td>
                 <td>
                   {{count($Job->employees)}}
                 </td>
                 <td class="text-center">
                   <a href="{{url('jobs/'.$Job->id)}}"  class="btn btn-fill btn-primary btn-sm"><i class="fa fa-search"></i></a>
+                  <a target="_blank" href="{{url('printjob/'.$Job->id)}}"  class="btn btn-fill btn-primary btn-sm"><i class="fa fa-print"></i></a>
                 </td>
               </tr>
             @endforeach

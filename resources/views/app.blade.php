@@ -29,7 +29,7 @@
       <div class="sidebar-wrapper">
         <div class="logo">
           <a href="{{url('/')}}" class="simple-text logo-mini">
-            <img src='img/logo.png' style="width: 200px;" />
+            <img src='{{ asset('img/logo.png')}}' style="width: 200px;" />
           </a>
           <a href="{{url('/')}}" class="simple-text logo-normal">
             KORMOCHAI
@@ -51,7 +51,7 @@
           <li>
             <a href="{{route('partnerservices.index')}}">
               <i class="fa fa-industry"></i>
-              <p>Services</p>
+              <p>Services Provider</p>
             </a>
           </li>
           <li>
@@ -66,7 +66,7 @@
               <p>Employees</p>
             </a>
           </li>
-          <li>
+          <!-- <li>
             <a href="{{route('clients.index')}}">
               <i class="tim-icons icon-single-02"></i>
               <p>Service Customers</p>
@@ -77,7 +77,7 @@
               <i class="tim-icons icon-single-02"></i>
               <p>Service Partners</p>
             </a>
-          </li>
+          </li> -->
           <li>
             <a href="{{route('locations.index')}}">
               <i class="tim-icons icon-pin"></i>
@@ -218,29 +218,13 @@
       </div>
       <footer class="footer">
         <div class="container-fluid">
-          <ul class="nav">
-            <li class="nav-item">
-              <a href="javascript:void(0)" class="nav-link">
-                Creative Tim
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="javascript:void(0)" class="nav-link">
-                About Us
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="javascript:void(0)" class="nav-link">
-                Blog
-              </a>
-            </li>
-          </ul>
+          
           <div class="copyright">
             ©
             <script>
               document.write(new Date().getFullYear())
             </script> made with <i class="tim-icons icon-heart-2"></i> by
-            <a href="javascript:void(0)" target="_blank">Creative Tim</a> for a better web.
+            <a href="https://www.facebook.com/falgunitsolution" target="_blank">Falgun IT</a> for a better web.
           </div>
         </div>
       </footer>

@@ -18,7 +18,7 @@ class CreatePartnerservicesTable extends Migration
             $table->string('partners_id');
             $table->string('name');
             $table->string('phone');
-            $table->string('compnay_name');
+            $table->string('company_name');
             $table->string('per_area');
             $table->string('per_thana');
             $table->string('per_district');

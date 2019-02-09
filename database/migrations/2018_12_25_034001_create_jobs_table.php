@@ -39,7 +39,12 @@ class CreateJobsTable extends Migration
             $table->string('admin_salary')->nullable();
             $table->string('salary_date');
             $table->string('employee_number');
+            $table->string('employee_type');
             $table->string('active')->default(0);
+            $table->string('hour')->nullable();
+            $table->string('min')->nullable();
+            $table->string('ampm')->nullable();
+            $table->text('details')->nullable();
 
             $table->timestamps();
         });

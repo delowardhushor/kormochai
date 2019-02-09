@@ -143,7 +143,13 @@
                   ৳ {{$Job->salary}} / {{$Job->salary_type}}
                 </td>
                 <td>
-                  {{$Job->employers->phone}}
+                  <?php 
+                    if($Job->employers_id > 0){
+                      echo $Job->employers->phone;
+                    }else{
+                      echo "Admin";
+                    } 
+                  ?>
                 </td>
                 <td>
                   {{count($Job->employees)}}

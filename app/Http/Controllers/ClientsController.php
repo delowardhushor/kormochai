@@ -38,9 +38,20 @@ class ClientsController extends Controller
     {
         $Clients = Clients::where("phone", "=", $request->input('phone'))->first();
         if($Clients == ''){
-            return ['success' => true];
-        }else{
             return ['success' => false];
+        }else{
+            return ['success' => true];
+        }
+    }
+
+    public function cngpass(Request $request){
+        $Clients = Clients::where("phone", "=", $request->input('phone'))->first();
+        if($Clients == ''){
+           return "Are You Hacker"; 
+        }else{
+            $Clients->password = Hash::make($request->input('password'));
+            $Clients->save();
+            return ['success' => true, 'data' => $Clients];
         }
     }
 

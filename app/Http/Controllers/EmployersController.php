@@ -74,9 +74,20 @@ class EmployersController extends Controller
     {
         $Employers = Employers::where("phone", "=", $request->input('phone'))->first();
         if($Employers == ''){
-            return ['success' => true];
-        }else{
             return ['success' => false];
+        }else{
+            return ['success' => true];
+        }
+    }
+
+    public function cngpass(Request $request){
+        $Employers = Employers::where("phone", "=", $request->input('phone'))->first();
+        if($Employers == ''){
+           return "Are You Hacker"; 
+        }else{
+            $Employers->password = Hash::make($request->input('password'));
+            $Employers->save();
+            return ['success' => true, 'data' => $Employers];
         }
     }
 

@@ -46,6 +46,12 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('delclicats', 'ClicatsController@destroy');
     Route::post('delparcats', 'ParcatsController@destroy');
     Route::post('/deledue' , 'EducativesController@destroy');
+
+    Route::get('/printjob/{id}' , "JobsController@print");
+    Route::get('/printser/{id}' , "PartnerservicesController@print");
+    Route::get('/printserreq/{id}' , "ClientservicesController@print");
+
+
 });
 
 Auth::routes();

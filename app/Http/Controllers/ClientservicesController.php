@@ -18,6 +18,11 @@ class ClientservicesController extends Controller
         return view('clientservices')->with(compact("clientservices"));
     }
 
+    public function print($id){
+        $clientservices = Clientservices::find($id);
+        return view('print.servicereq')->with(compact("clientservices"));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
