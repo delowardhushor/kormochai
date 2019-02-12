@@ -154,8 +154,8 @@
               <div class="form-group">
                 <label>Interview Need?</label>
                 <select type="text" required name="interview" class="form-control" >
-                  <option value="true">Yes</option>
-                  <option value="false">No</option>
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
                 </select>
               </div>
             </div>
@@ -178,7 +178,7 @@
             </div>
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
-                <label>Job Date</label>
+                <label>Join Date</label>
                 <input type="date" required name="job_date" class="form-control" >
               </div>
             </div>

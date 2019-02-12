@@ -159,11 +159,11 @@
               <div class="form-group">
                 <label>Interview Need?</label>
                 <div type="text" class="form-control" >
-                  <?php if($Job->interview){echo "Yes";}else{ echo'NO';} ?>
+                  <?php if($Job->interview == 1){echo "Yes";}else{ echo'NO';} ?>
                 </div>
               </div>
             </div>
-            <?php if($Job->interview){?>
+            <?php if($Job->interview == 1){?>
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Interview Date</label>
@@ -185,7 +185,7 @@
             </div>
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
-                <label>Job Date</label>
+                <label>Join Date</label>
                 <div type="text" class="form-control" >
                   {{$Job->job_date}}
                 </div>
