@@ -36,7 +36,7 @@ class CreateJobsTable extends Migration
             $table->string('thana');
             $table->string('zila');
             $table->string('house');
-            $table->string('admin_salary')->nullable();
+            $table->string('admin_salary')->default(0);
             $table->string('salary_date');
             $table->string('employee_number');
             $table->string('employee_type');

@@ -162,7 +162,8 @@ class JobsController extends Controller
     public function intervalJob(Request $request)
     {
         $myJobs = [];
-        $Jobs = Jobs::orderBy('id', 'desc')->get();
+        //$Jobs = Jobs::orderBy('id', 'desc')->get();
+        $Jobs = Jobs::where('active', '=', 1)->orderBy('id', 'DESC')->get();
         $Cats = Cats::all();
         $clicats = Clicats::all();
         $parcats = Parcats::all();
