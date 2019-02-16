@@ -34,6 +34,21 @@ class EmployeesController extends Controller
         }
     }
 
+    public function cngnewpass(Request $request)
+    {
+        $Employees = Employees::where("phone", "=", $request->input('phone'))->first();
+        if($Employees == ''){
+            return ['success' => false, 'msg' => 'Invalid Information'];
+        }
+        elseif($Employees !== '' && Hash::check($request->input('oldpass'), $Employees->password) === true){
+            $Employees->password = Hash::make($request->input('password'));
+            $Employees->save();
+            return ['success' => true, 'data' => $Employees];
+        }else{
+            return ['success' => false, 'msg' => 'Invalid Information'];
+        }
+    }
+
     public function exist(Request $request)
     {
         $Employees = Employees::where("phone", "=", $request->input('phone'))->first();

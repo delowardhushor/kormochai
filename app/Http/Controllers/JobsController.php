@@ -104,7 +104,9 @@ class JobsController extends Controller
     public function show($jobs)
     {
         $Job = JObs::find($jobs);
-        return view('jobdetails')->with(compact("Job"));
+        $locations = Locations::all();
+        $cats = Cats::all();
+        return view('jobdetails')->with(compact("Job", "locations", "cats"));
     }
 
     /**

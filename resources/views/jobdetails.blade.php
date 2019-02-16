@@ -1,32 +1,35 @@
 @extends('app')
 @section('title', "Job's Details")
 
+<style type="text/css">
+  option{
+    background-color: #525f7f;
+    color: #fff;
+  }
+</style>
+
 @section('content')
 <div class="row">
   <div class="col-md-7">
     <div class="card">
       <div class="card-header">
-        <h5 class="title">{{$Job->job_title}}'s Details</h5>
+        <h5 class="title">Job Details</h5>
       </div>
       <div class="card-body">
-        <form method="POST" action="{{url('job/update')}}">
+        <form method="POST" action="{{url('/jobs')}}">
           @csrf
-          <input type="text" style="display: none;" value="{{$Job->id}}" name="id" />
+          <!-- <input type="text" required style="display: none;" value="true" name="from_web" /> -->
           <div class="row">
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Name</label>
-                <div type="text" class="form-control" >
-                  {{$Job->name}}
-                </div>
+                <input type="text" value="{{$Job->name}}" required name="name" class="form-control" > 
               </div>
             </div>
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Mobile</label>
-                <div type="text" class="form-control" >
-                  {{$Job->mobile}}
-                </div>
+                <input type="text" value="{{$Job->mobile}}" required name="mobile" class="form-control" >
               </div>
             </div>
           </div>
@@ -34,17 +37,13 @@
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Job Title</label>
-                <div type="text" class="form-control" >
-                  {{$Job->job_title}}
-                </div>
+                <input type="text" value="{{$Job->job_title}}" required name="job_title" class="form-control" >
               </div>
             </div>
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Company Name</label>
-                <div type="text" class="form-control" >
-                  {{$Job->company_name}}
-                </div>
+                <input type="text" required value="{{$Job->company_name}}" name="company_name" class="form-control" >
               </div>
             </div>
           </div>
@@ -52,17 +51,13 @@
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Area</label>
-                <div type="text" class="form-control" >
-                  {{$Job->area}}
-                </div>
+                <input type="text" required name="area" value="{{$Job->area}}" class="form-control" >
               </div>
             </div>
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Thana</label>
-                <div type="text" class="form-control" >
-                  {{$Job->thana}}
-                </div>
+                <input type="text" required name="thana" value="{{$Job->thana}}" class="form-control" >
               </div>
             </div>
           </div>
@@ -70,17 +65,13 @@
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>District</label>
-                <div type="text" class="form-control" >
-                  {{$Job->zila}}
-                </div>
+                <input type="text" required name="zila" value="{{$Job->zila}}" class="form-control" >
               </div>
             </div>
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>House</label>
-                <div type="text" class="form-control" >
-                  {{$Job->house}}
-                </div>
+                <input type="text" required name="house" value="{{$Job->house}}" class="form-control" >
               </div>
             </div>
           </div>
@@ -88,17 +79,21 @@
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Job Location</label>
-                <div type="text" class="form-control" >
-                  {{$Job->location}}
-                </div>
+                <select type="text" required name="location" class="form-control" >
+                  @foreach($locations as $location)
+                  <option <?php if($location->location == $Job->location){echo"selected";} ?> >{{$location->location}}</option>
+                  @endforeach
+                </select>
               </div>
             </div>
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Category</label>
-                <div type="text" class="form-control" >
-                  {{$Job->category}}
-                </div>
+                <select type="text" required name="category" class="form-control" >
+                  @foreach($cats as $cat)
+                  <option <?php if($cat->cat == $Job->category){echo "selected";} ?>>{{$cat->cat}}</option>
+                  @endforeach
+                </select>
               </div>
             </div>
           </div>
@@ -106,15 +101,18 @@
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Salary</label>
-                <div type="text" class="form-control" >
-                  {{$Job->salary}} / {{$Job->salary_type}}
-                </div>
+                <input type="text" required style="display: none;" name="salary" value="not set" class="form-control" >
+                <select type="text" required name="salary_type" class="form-control" >
+                  <option <?php if($Job->salary_type == "monthly"){echo "selected";} ?> value="monthly">monthly</option>
+                  <option <?php if($Job->salary_type == "weekly"){echo "selected";} ?> value="weekly">weekly</option>
+                  <option <?php if($Job->salary_type == "daily"){echo "selected";} ?> value="daily">daily</option>
+                </select>
               </div>
             </div>
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Admin Salary</label>
-                <input value="{{$Job->admin_salary}}" name="admin_salary" type="text" class="form-control" >
+                <input value="{{$Job->admin_salary}}" required name="admin_salary" type="text" class="form-control" >
               </div>
             </div>
           </div>
@@ -122,17 +120,13 @@
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Salary Date</label>
-                <div type="text" class="form-control" >
-                  {{$Job->salary_date}}
-                </div>
+                <input type="text" value="{{$Job->salary_date}}" required required name="salary_date" class="form-control" >
               </div>
             </div>
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Office Hour</label>
-                <div type="text" class="form-control" >
-                  {{$Job->office_hour}}
-                </div>
+                <input type="text" value="{{$Job->office_hour}}" required name="office_hour" class="form-control" >
               </div>
             </div>
           </div>
@@ -140,17 +134,17 @@
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Number of Employee</label>
-                <div type="text" class="form-control" >
-                  {{$Job->employee_number}}
-                </div>
+                <input type="text" value="{{$Job->employee_number}}" required name="employee_number" class="form-control" >
               </div>
             </div>
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
-                <label>Male or Female</label>
-                <div type="text" class="form-control" >
-                  {{$Job->employee_type}}
-                </div>
+                <label>Male / Female?</label>
+                <select type="text" required name="employee_type" class="form-control" >
+                  <option <?php if($Job->employee_type == "male"){echo "selected";} ?> value="male">Male</option>
+                  <option <?php if($Job->employee_type == "female"){echo "selected";} ?> value="female">Female</option>
+                  <option <?php if($Job->employee_type == "any"){echo "selected";} ?> value="any">Any</option>
+                </select>
               </div>
             </div>
           </div>
@@ -158,37 +152,34 @@
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Interview Need?</label>
-                <div type="text" class="form-control" >
-                  <?php if($Job->interview == 1){echo "Yes";}else{ echo'NO';} ?>
-                </div>
+                <select type="text" required name="interview" class="form-control" >
+                  <option <?php if($Job->interview == 1){echo "selected";} ?>  value="1">Yes</option>
+                  <option <?php if($Job->interview == 0){echo "selected";} ?> value="0">No</option>
+                </select>
               </div>
             </div>
-            <?php if($Job->interview == 1){?>
             <div class="col-md-12 pr-md-1">
-              <div class="form-group">
+              <div class="form-group" style="background-color: #fff; color: #000">
                 <label>Interview Date</label>
-                <div type="text" class="form-control" >
-                  {{$Job->interview_date}}
-                </div>
+                <input required value="{{$Job->interview_date}}" type="date" name="interview_date" class="form-control" >
+                <input id="datepicker" type="text">
               </div>
             </div>
-          <?php } ?>
           </div>
           <div class="row">
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Job Type</label>
-                <div type="text" class="form-control" >
-                  {{$Job->job_type}}
-                </div>
+                <select type="text" required name="job_type" class="form-control" >
+                  <option value="parttime">Part Time</option>
+                  <option value="fulltime">Full Time</option>
+                </select>
               </div>
             </div>
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Join Date</label>
-                <div type="text" class="form-control" >
-                  {{$Job->job_date}}
-                </div>
+                <input type="date" required name="job_date" class="form-control" >
               </div>
             </div>
           </div>
@@ -196,9 +187,7 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label>Educational Requirment</label>
-                <div type="text" class="form-control" >
-                  {{$Job->education}}
-                </div>
+                <input type="text" required name="education" class="form-control" >
               </div>
             </div>
           </div>
@@ -206,9 +195,8 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label>Job Responsibility</label>
-                <div type="text" class="form-control" >
-                  {{$Job->job_responsibility}}
-                </div>
+                <textarea required="" class="form-control" name="job_responsibility" >
+                </textarea>
               </div>
             </div>
           </div>
@@ -216,16 +204,16 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label style="margin-right: 20px;">Publish This Job</label>
-                <label style="margin-right: 5px">YES</label>
-                <input <?php if($Job->active == 1){echo'checked';} ?> style="margin-right: 20px" type="radio" name="publish" value="1">
+                <label  style="margin-right: 5px">YES</label>
+                <input checked style="margin-right: 20px" type="radio" name="publish" value="1">
                 <label style="margin-right: 5px">NO</label>
-                <input <?php if($Job->active == 0){echo'checked';} ?> type="radio" name="publish" value="0">
+                <input type="radio" name="publish" value="0">
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-md-12">
-              <button class="btn btn-sm btn-primary" type="submit">Update</button>
+              <button class="btn btn-sm btn-primary" type="submit">Post</button>
             </div>
           </div>
         </form>

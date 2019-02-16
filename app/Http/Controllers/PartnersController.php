@@ -44,6 +44,21 @@ class PartnersController extends Controller
         }
     }
 
+    public function cngnewpass(Request $request)
+    {
+        $Partners = Partners::where("phone", "=", $request->input('phone'))->first();
+        if($Partners == ''){
+            return ['success' => false, 'msg' => 'Invalid Information'];
+        }
+        elseif($Partners !== '' && Hash::check($request->input('oldpass'), $Partners->password) === true){
+            $Partners->password = Hash::make($request->input('password'));
+            $Partners->save();
+            return ['success' => true, 'data' => $Partners];
+        }else{
+            return ['success' => false, 'msg' => 'Invalid Information'];
+        }
+    }
+
     public function exist(Request $request)
     {
         $partners = Partners::where("phone", "=", $request->input('phone'))->first();

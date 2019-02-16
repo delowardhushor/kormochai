@@ -41,6 +41,11 @@ Route::group(['middleware' => 'cors'], function(){
     Route::post('/clients/cngpass', 'ClientsController@cngpass');
     Route::post('/partners/cngpass', 'PartnersController@cngpass');
 
+    Route::post('/employees/cngnewpass', 'EmployeesController@cngnewpass');
+    Route::post('/employers/cngnewpass', 'EmployersController@cngnewpass');
+    Route::post('/clients/cngnewpass', 'ClientsController@cngnewpass');
+    Route::post('/partners/cngnewpass', 'PartnersController@cngnewpass');
+
     Route::post('/clientservices', 'ClientservicesController@store');
     Route::post('/partnerservices', 'PartnerservicesController@store');
 

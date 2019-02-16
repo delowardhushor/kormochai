@@ -195,8 +195,7 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label>Job Responsibility</label>
-                <textarea required="" class="form-control" name="job_responsibility" >
-                </textarea>
+                <textarea required="" class="form-control" name="job_responsibility" ></textarea>
               </div>
             </div>
           </div>

@@ -34,6 +34,21 @@ class ClientsController extends Controller
         }
     }
 
+    public function cngnewpass(Request $request)
+    {
+        $Clients = Clients::where("phone", "=", $request->input('phone'))->first();
+        if($Clients == ''){
+            return ['success' => false, 'msg' => 'Invalid Information'];
+        }
+        elseif($Clients !== '' && Hash::check($request->input('oldpass'), $Clients->password) === true){
+            $Clients->password = Hash::make($request->input('password'));
+            $Clients->save();
+            return ['success' => true, 'data' => $Clients];
+        }else{
+            return ['success' => false, 'msg' => 'Invalid Information'];
+        }
+    }
+
     public function exist(Request $request)
     {
         $Clients = Clients::where("phone", "=", $request->input('phone'))->first();

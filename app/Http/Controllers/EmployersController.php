@@ -70,6 +70,20 @@ class EmployersController extends Controller
         }
     }
 
+    public function cngnewpass(Request $request)
+    {
+        $Employers = Employers::where("phone", "=", $request->input('phone'))->first();
+        if($Employers == ''){
+            return ['success' => false, 'msg' => 'Invalid Information'];
+        }elseif(Hash::check($request->input('oldpass'), $Employers->password) == true){
+            $Employers->password = Hash::make($request->input('password'));
+            $Employers->save();
+            return ['success' => true, 'data' => $Employers];
+        }else{
+            return ['success' => false, 'msg' => 'Invalid Information'];
+        }
+    }
+
     public function exist(Request $request)
     {
         $Employers = Employers::where("phone", "=", $request->input('phone'))->first();
