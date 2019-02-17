@@ -16,9 +16,10 @@
         <h5 class="title">Job Details</h5>
       </div>
       <div class="card-body">
-        <form method="POST" action="{{url('/jobs')}}">
+        <form method="POST" action="{{url('/job/update')}}">
           @csrf
-          <!-- <input type="text" required style="display: none;" value="true" name="from_web" /> -->
+          <input type="text" required style="display: none;" value="{{$Job->id}}" name="id" />
+          <input type="text" required style="display: none;" value="{{$Job->employers_id}}" name="employers_id" />
           <div class="row">
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
@@ -158,28 +159,29 @@
                 </select>
               </div>
             </div>
+            @if($Job->interview == 1)
             <div class="col-md-12 pr-md-1">
-              <div class="form-group" style="background-color: #fff; color: #000">
+              <div class="form-group">
                 <label>Interview Date</label>
                 <input required value="{{$Job->interview_date}}" type="date" name="interview_date" class="form-control" >
-                <input id="datepicker" type="text">
               </div>
             </div>
+            @endif
           </div>
           <div class="row">
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Job Type</label>
                 <select type="text" required name="job_type" class="form-control" >
-                  <option value="parttime">Part Time</option>
-                  <option value="fulltime">Full Time</option>
+                  <option <?php if($Job->job_type == "parttime"){echo "selected";} ?> value="parttime">Part Time</option>
+                  <option <?php if($Job->job_type == "fulltime"){echo "selected";} ?> value="fulltime">Full Time</option>
                 </select>
               </div>
             </div>
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Join Date</label>
-                <input type="date" required name="job_date" class="form-control" >
+                <input value="{{$Job->job_date}}" type="date" required name="job_date" class="form-control" >
               </div>
             </div>
           </div>
@@ -187,7 +189,7 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label>Educational Requirment</label>
-                <input type="text" required name="education" class="form-control" >
+                <input value="{{$Job->education}}" type="text" required name="education" class="form-control" >
               </div>
             </div>
           </div>
@@ -195,8 +197,7 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label>Job Responsibility</label>
-                <textarea required="" class="form-control" name="job_responsibility" >
-                </textarea>
+                <textarea required="" class="form-control" name="job_responsibility" >{{$Job->job_responsibility}}</textarea>
               </div>
             </div>
           </div>
@@ -205,9 +206,9 @@
               <div class="form-group">
                 <label style="margin-right: 20px;">Publish This Job</label>
                 <label  style="margin-right: 5px">YES</label>
-                <input checked style="margin-right: 20px" type="radio" name="publish" value="1">
+                <input <?php if($Job->active == 1){echo "ckecked"; }?> style="margin-right: 20px" type="radio" name="publish" value="1">
                 <label style="margin-right: 5px">NO</label>
-                <input type="radio" name="publish" value="0">
+                <input <?php if($Job->active == 0){echo "ckecked"; }?> type="radio" name="publish" value="0">
               </div>
             </div>
           </div>

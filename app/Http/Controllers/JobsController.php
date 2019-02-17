@@ -130,24 +130,43 @@ class JobsController extends Controller
     public function update(Request $request)
     {
         $Jobs = Jobs::find($request->input('id'));
-        // $Jobs->employers_id = $request->input('employers_id');
-        // $Jobs->company_name = $request->input('company_name');
-        // $Jobs->job_title = $request->input('job_title');
-        // $Jobs->education = $request->input('education');
-        // $Jobs->salary = $request->input('salary');
-        // $Jobs->salary_type = $request->input('salary_type');
-        // $Jobs->office_hour = $request->input('office_hour');
-        // $Jobs->location = $request->input('location');
-        // $Jobs->job_responsibility = $request->input('job_responsibility');
-        // $Jobs->interview = $request->input('interview');
-        // $Jobs->interview_date = $request->input('interview_date');
-        // $Jobs->job_date = $request->input('job_date');
-        // $Jobs->job_type = $request->input('job_type');
-        // $Jobs->category = $request->input('category');
+        
+        $Jobs->company_name = $request->input('company_name');
+        $Jobs->job_title = $request->input('job_title');
+        $Jobs->education = $request->input('education');
+        $Jobs->salary = $request->input('salary');
+        $Jobs->salary_type = $request->input('salary_type');
+        $Jobs->office_hour = $request->input('office_hour');
+        $Jobs->location = $request->input('location');
+        $Jobs->job_responsibility = $request->input('job_responsibility');
+        $Jobs->interview = $request->input('interview');
+        $Jobs->interview_date = $request->input('interview_date');
+        $Jobs->job_date = $request->input('job_date');
+        $Jobs->job_type = $request->input('job_type');
+        $Jobs->category = $request->input('category');
+
+        $Jobs->name = $request->input('name');
+        $Jobs->mobile = $request->input('mobile');
+        $Jobs->area = $request->input('area');
+        $Jobs->thana = $request->input('thana');
+        $Jobs->zila = $request->input('zila');
+        $Jobs->house = $request->input('house');
+        $Jobs->salary_date = $request->input('salary_date');
+        $Jobs->employee_number = $request->input('employee_number');
+        $Jobs->employee_type = $request->input('employee_type');
+        $Jobs->min = $request->input('min');
+        $Jobs->hour = $request->input('hour');
+        $Jobs->ampm = $request->input('ampm');
+        $Jobs->details = $request->input('details');
+
         $Jobs->admin_salary = $request->input('admin_salary');
         $Jobs->active = $request->input('publish');
-        $Jobs->save();
-        return redirect()->route('home');
+        if($Jobs->save()){
+            return redirect()->route('home');
+        }else{
+            return redirect()->back();
+        }
+        
     }
 
     /**
