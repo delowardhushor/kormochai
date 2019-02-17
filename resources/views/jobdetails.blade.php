@@ -159,15 +159,50 @@
                 </select>
               </div>
             </div>
-            @if($Job->interview == 1)
+          </div>
+          @if($Job->interview == 1)
+          <div class="row">
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Interview Date</label>
                 <input required value="{{$Job->interview_date}}" type="date" name="interview_date" class="form-control" >
               </div>
             </div>
-            @endif
           </div>
+          <div class="row">
+            <div class="col-md-12 pr-md-1" >
+              <div class="form-group">
+                <label>Interview Time</label>
+                <div style="display: flex;flex-direction: row">
+                  <select name="hour" class="form-control">
+                    <option <?php if($Job->hour == '01'){echo "selected";} ?> value="01">01</option>
+                    <option <?php if($Job->hour == '01'){echo "selected";} ?>  value="02">02</option>
+                    <option <?php if($Job->hour == '01'){echo "selected";} ?>  value="03">03</option>
+                    <option <?php if($Job->hour == '01'){echo "selected";} ?>  value="04">04</option>
+                    <option <?php if($Job->hour == '01'){echo "selected";} ?>  value="05">05</option>
+                    <option <?php if($Job->hour == '01'){echo "selected";} ?>  value="06">06</option>
+                    <option <?php if($Job->hour == '01'){echo "selected";} ?>  value="07">07</option>
+                    <option <?php if($Job->hour == '01'){echo "selected";} ?>  value="08">08</option>
+                    <option <?php if($Job->hour == '01'){echo "selected";} ?>  value="09">09</option>
+                    <option <?php if($Job->hour == '01'){echo "selected";} ?>  value="10">10</option>
+                    <option <?php if($Job->hour == '01'){echo "selected";} ?>  value="11">11</option>
+                    <option <?php if($Job->hour == '01'){echo "selected";} ?>  value="12">12</option>
+                  </select>
+                  <select name="min" class="form-control">
+                    <option <?php if($Job->min == '01'){echo "selected";} ?>  value="00">00</option>
+                    <option <?php if($Job->min == '01'){echo "selected";} ?>  value="15">15</option>
+                    <option <?php if($Job->min == '01'){echo "selected";} ?>  value="30">30</option>
+                    <option <?php if($Job->min == '01'){echo "selected";} ?>  value="45">45</option>
+                  </select>
+                  <select name="ampm" class="form-control">
+                    <option <?php if($Job->ampm == '01'){echo "selected";} ?>  value="AM">AM</option>
+                    <option <?php if($Job->ampm == '01'){echo "selected";} ?>  value="PM">PM</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          @endif
           <div class="row">
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
@@ -206,9 +241,9 @@
               <div class="form-group">
                 <label style="margin-right: 20px;">Publish This Job</label>
                 <label  style="margin-right: 5px">YES</label>
-                <input <?php if($Job->active == 1){echo "ckecked"; }?> style="margin-right: 20px" type="radio" name="publish" value="1">
+                <input <?php if($Job->active == 1){echo "checked"; }?> style="margin-right: 20px" type="radio" name="publish" value="1">
                 <label style="margin-right: 5px">NO</label>
-                <input <?php if($Job->active == 0){echo "ckecked"; }?> type="radio" name="publish" value="0">
+                <input <?php if($Job->active == 0){echo "checked"; }?> type="radio" name="publish" value="0">
               </div>
             </div>
           </div>
