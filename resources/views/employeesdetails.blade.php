@@ -45,37 +45,39 @@
                 <input type="text" class="form-control" value="{{$employee->education}}" />
               </div>
             </div>
-          </div>
-          
-          <div class="row">
             <div class="col-md-6 pr-md-1">
               <div class="form-group">
                 <label>Reffered</label>
                 <input type="text" class="form-control" value="{{$employee->referred}}" />
               </div>
             </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 pr-md-1">
+              <h3>Present Address</h3>
+            </div>
+          </div>
+          <div class="row">
             <div class="col-md-6 pr-md-1">
               <div class="form-group">
                 <label>Area</label>
                 <input type="text" class="form-control" value="{{$employee->area}}" />
               </div>
             </div>
-          </div>
-          <div class="row">
             <div class="col-md-6 pr-md-1">
               <div class="form-group">
                 <label>Post</label>
                 <input type="text" class="form-control" value="{{$employee->post}}" />
               </div>
             </div>
+          </div>
+          <div class="row">
             <div class="col-md-6 pr-md-1">
               <div class="form-group">
                 <label>Thana</label>
                 <input type="text" class="form-control" value="{{$employee->thana}}" />
               </div>
             </div>
-          </div>
-          <div class="row">
             <div class="col-md-6 pr-md-1">
               <div class="form-group">
                 <label>District</label>
@@ -84,10 +86,35 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6 pr-md-1">
+              <h3>Permanent Address</h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 pr-md-1">
               <div class="form-group">
-                <label>Address</label>
-                <input type="text" class="form-control" value="{{$employee->address}}" />
+                <label>Area</label>
+                <input type="text" class="form-control" value="{{$employee->perarea}}" />
+              </div>
+            </div>
+            <div class="col-md-6 pr-md-1">
+              <div class="form-group">
+                <label>Post</label>
+                <input type="text" class="form-control" value="{{$employee->perpost}}" />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 pr-md-1">
+              <div class="form-group">
+                <label>Thana</label>
+                <input type="text" class="form-control" value="{{$employee->perthana}}" />
+              </div>
+            </div>
+            <div class="col-md-6 pr-md-1">
+              <div class="form-group">
+                <label>District</label>
+                <input type="text" class="form-control" value="{{$employee->perdistrict}}" />
               </div>
             </div>
           </div>

@@ -159,10 +159,45 @@
                 </select>
               </div>
             </div>
+          </div>
+          <div class="row">
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Interview Date</label>
-                <input required type="date" name="interview_date" class="form-control" >
+                <input required type="text" name="interview_date" class="form-control" >
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 pr-md-1" >
+              <div class="form-group">
+                <label>Interview Time</label>
+                <div style="display: flex;flex-direction: row">
+                  <select name="hour" class="form-control">
+                    <option value="01">01</option>
+                    <option  value="02">02</option>
+                    <option  value="03">03</option>
+                    <option  value="04">04</option>
+                    <option  value="05">05</option>
+                    <option  value="06">06</option>
+                    <option  value="07">07</option>
+                    <option  value="08">08</option>
+                    <option  value="09">09</option>
+                    <option  value="10">10</option>
+                    <option  value="11">11</option>
+                    <option  value="12">12</option>
+                  </select>
+                  <select name="min" class="form-control">
+                    <option value="00">00</option>
+                    <option value="15">15</option>
+                    <option value="30">30</option>
+                    <option value="45">45</option>
+                  </select>
+                  <select name="ampm" class="form-control">
+                    <option value="AM">AM</option>
+                    <option value="PM">PM</option>
+                  </select>
+                </div>
               </div>
             </div>
           </div>
@@ -179,7 +214,7 @@
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Join Date</label>
-                <input type="date" required name="job_date" class="form-control" >
+                <input type="text" required name="job_date" class="form-control" >
               </div>
             </div>
           </div>

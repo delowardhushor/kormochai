@@ -53,8 +53,26 @@
           </div>
           @endforeach
           <div class="row">
+            <div class="col-md-6 pr-md-1">
+              <div class="form-group">
+                <label>Service Date</label>
+                <div type="text" class="form-control" >
+                  {{$clientservices->service_date}}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 pr-md-1">
+              <div class="form-group">
+                <label>Time</label>
+                <div type="text" class="form-control" >
+                  {{$clientservices->hour}}:{{$clientservices->min}} - {{$clientservices->ampm}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
             <div class="col-md-12">
-              <h5 class="title">Address</h5>
+              <h5 class="title">Service Address</h5>
             </div>
           </div>
           <div class="row">

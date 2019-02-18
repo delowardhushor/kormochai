@@ -165,7 +165,7 @@
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Interview Date</label>
-                <input required value="{{$Job->interview_date}}" type="date" name="interview_date" class="form-control" >
+                <input required value="{{$Job->interview_date}}" type="text" name="interview_date" class="form-control" >
               </div>
             </div>
           </div>
@@ -176,27 +176,27 @@
                 <div style="display: flex;flex-direction: row">
                   <select name="hour" class="form-control">
                     <option <?php if($Job->hour == '01'){echo "selected";} ?> value="01">01</option>
-                    <option <?php if($Job->hour == '01'){echo "selected";} ?>  value="02">02</option>
-                    <option <?php if($Job->hour == '01'){echo "selected";} ?>  value="03">03</option>
-                    <option <?php if($Job->hour == '01'){echo "selected";} ?>  value="04">04</option>
-                    <option <?php if($Job->hour == '01'){echo "selected";} ?>  value="05">05</option>
-                    <option <?php if($Job->hour == '01'){echo "selected";} ?>  value="06">06</option>
-                    <option <?php if($Job->hour == '01'){echo "selected";} ?>  value="07">07</option>
-                    <option <?php if($Job->hour == '01'){echo "selected";} ?>  value="08">08</option>
-                    <option <?php if($Job->hour == '01'){echo "selected";} ?>  value="09">09</option>
-                    <option <?php if($Job->hour == '01'){echo "selected";} ?>  value="10">10</option>
-                    <option <?php if($Job->hour == '01'){echo "selected";} ?>  value="11">11</option>
-                    <option <?php if($Job->hour == '01'){echo "selected";} ?>  value="12">12</option>
+                    <option <?php if($Job->hour == '02'){echo "selected";} ?>  value="02">02</option>
+                    <option <?php if($Job->hour == '03'){echo "selected";} ?>  value="03">03</option>
+                    <option <?php if($Job->hour == '04'){echo "selected";} ?>  value="04">04</option>
+                    <option <?php if($Job->hour == '05'){echo "selected";} ?>  value="05">05</option>
+                    <option <?php if($Job->hour == '06'){echo "selected";} ?>  value="06">06</option>
+                    <option <?php if($Job->hour == '07'){echo "selected";} ?>  value="07">07</option>
+                    <option <?php if($Job->hour == '08'){echo "selected";} ?>  value="08">08</option>
+                    <option <?php if($Job->hour == '09'){echo "selected";} ?>  value="09">09</option>
+                    <option <?php if($Job->hour == '10'){echo "selected";} ?>  value="10">10</option>
+                    <option <?php if($Job->hour == '11'){echo "selected";} ?>  value="11">11</option>
+                    <option <?php if($Job->hour == '12'){echo "selected";} ?>  value="12">12</option>
                   </select>
                   <select name="min" class="form-control">
-                    <option <?php if($Job->min == '01'){echo "selected";} ?>  value="00">00</option>
-                    <option <?php if($Job->min == '01'){echo "selected";} ?>  value="15">15</option>
-                    <option <?php if($Job->min == '01'){echo "selected";} ?>  value="30">30</option>
-                    <option <?php if($Job->min == '01'){echo "selected";} ?>  value="45">45</option>
+                    <option <?php if($Job->min == '00'){echo "selected";} ?>  value="00">00</option>
+                    <option <?php if($Job->min == '15'){echo "selected";} ?>  value="15">15</option>
+                    <option <?php if($Job->min == '30'){echo "selected";} ?>  value="30">30</option>
+                    <option <?php if($Job->min == '45'){echo "selected";} ?>  value="45">45</option>
                   </select>
                   <select name="ampm" class="form-control">
-                    <option <?php if($Job->ampm == '01'){echo "selected";} ?>  value="AM">AM</option>
-                    <option <?php if($Job->ampm == '01'){echo "selected";} ?>  value="PM">PM</option>
+                    <option <?php if($Job->ampm == 'AM'){echo "selected";} ?>  value="AM">AM</option>
+                    <option <?php if($Job->ampm == 'PM'){echo "selected";} ?>  value="PM">PM</option>
                   </select>
                 </div>
               </div>
@@ -216,7 +216,7 @@
             <div class="col-md-12 pr-md-1">
               <div class="form-group">
                 <label>Join Date</label>
-                <input value="{{$Job->job_date}}" type="date" required name="job_date" class="form-control" >
+                <input value="{{$Job->job_date}}" type="text" required name="job_date" class="form-control" >
               </div>
             </div>
           </div>
